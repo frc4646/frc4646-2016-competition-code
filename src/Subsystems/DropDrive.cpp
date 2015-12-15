@@ -1,6 +1,7 @@
 #include "DropDrive.h"
 #include "../RobotMap.h"
 #include "../Commands/TankDrive.h"
+#include "../OI.h"
 
 DropDrive::DropDrive() :
 		Subsystem("DropDrive"),
@@ -20,11 +21,13 @@ void DropDrive::InitDefaultCommand()
 
 }
 
-void DropDrive::HandleDrive(Joystick& drive) {
-	DriveTrain.TankDrive(drive.GetRawAxis(1), drive.GetRawAxis(3), true);
+void DropDrive::HandleDrive(Joystick& stick) {
+	DriveTrain.TankDrive(stick.GetRawAxis(1)*1.0, stick.GetRawAxis(5)*1.0);
 }
 
 void DropDrive::Stop() {
+	leftMotors.SetSpeed(0);
+	rightMotors.SetSpeed(0);
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

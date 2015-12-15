@@ -25,5 +25,7 @@ void CommandBase::init()
 	// line should be repeated for each subsystem in the project.
 	examplesubsystem = new ExampleSubsystem();
 
+	ringer = new Ringer();
+	dropdrive = new DropDrive();
 	oi = new OI();
 }

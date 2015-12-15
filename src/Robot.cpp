@@ -25,6 +25,7 @@ private:
 	{
 		if (autonomousCommand != NULL)
 			autonomousCommand->Start();
+
 	}
 
 	void AutonomousPeriodic()
