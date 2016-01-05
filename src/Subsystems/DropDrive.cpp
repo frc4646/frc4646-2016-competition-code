@@ -22,7 +22,7 @@ void DropDrive::InitDefaultCommand()
 }
 
 void DropDrive::HandleDrive(Joystick& stick) {
-	DriveTrain.TankDrive(stick.GetRawAxis(1)*1.0, stick.GetRawAxis(5)*1.0);
+	DriveTrain.TankDrive(stick.GetRawAxis(5)*-1.0, stick.GetRawAxis(1)*-1.0);
 }
 
 void DropDrive::Stop() {

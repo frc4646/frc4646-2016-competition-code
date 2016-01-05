@@ -16,7 +16,7 @@ void RingerCommand::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void RingerCommand::Execute()
 {
-	ringer->SetSpeed(0.2);
+	ringer->SetSpeed(1);
 }
 
 // Make this return true when this Command no longer needs to run execute()

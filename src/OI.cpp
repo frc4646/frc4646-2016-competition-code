@@ -3,7 +3,7 @@
 
 OI::OI():
 stick(0),
-ringer(&stick, 1)
+ringer(&stick, 6)
 {
 	ringer.WhileHeld(new RingerCommand());
 	// Process operator interface input here.
