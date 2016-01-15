@@ -2,12 +2,16 @@
 #include "Commands/RingerCommand.h"
 
 OI::OI():
-stick(0),
-ringer(&stick, 6)
+left(0),
+right(1),
+ringer(&left, 6)
 {
 	ringer.WhileHeld(new RingerCommand());
 	// Process operator interface input here.
 }
-Joystick& OI::GetStick() {
-	return stick;
+Joystick& OI::GetLeftStick() {
+	return left;
+}
+Joystick& OI::GetRightStick() {
+	return right;
 }

@@ -17,7 +17,7 @@ private:
 public:
 	DropDrive();
 	void InitDefaultCommand();
-	void HandleDrive(Joystick& stick);
+	void HandleDrive(Joystick& left, Joystick& right);
 	void Stop();
 };
 

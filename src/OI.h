@@ -7,9 +7,11 @@ class OI
 {
 public:
 	OI();
-	Joystick& GetStick();
+	Joystick& GetLeftStick();
+	Joystick& GetRightStick();
 private:
-	Joystick stick;
+	Joystick left;
+	Joystick right;
 	JoystickButton ringer;
 };
 

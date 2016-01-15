@@ -17,7 +17,7 @@ void TankDrive::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void TankDrive::Execute()
 {
-	dropdrive->HandleDrive(oi->GetStick());
+	dropdrive->HandleDrive(oi->GetLeftStick(),oi->GetLeftStick());
 }
 
 // Make this return true when this Command no longer needs to run execute()
