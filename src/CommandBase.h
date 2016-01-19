@@ -8,6 +8,7 @@
 #include "Subsystems/DropDrive.h"
 #include "OI.h"
 #include "WPILib.h"
+#include "Subsystems/VisionSubsystem.h"
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -25,6 +26,7 @@ public:
 	static OI *oi;
 	static DropDrive *dropdrive;
 	static Ringer *ringer;
+	static VisionSubsystem *visionsubsystem;
 };
 
 #endif
