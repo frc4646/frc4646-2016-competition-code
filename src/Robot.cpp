@@ -41,7 +41,6 @@ private:
 		// this line or comment it out.
 		if (autonomousCommand != NULL)
 			autonomousCommand->Cancel();
-
 	}
 
 	void TeleopPeriodic()
