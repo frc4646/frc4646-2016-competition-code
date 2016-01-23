@@ -2,18 +2,25 @@
 #include "Commands/Command.h"
 #include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
+#include "Commands/DriveUntilClose.h"
 
 class Robot: public IterativeRobot
 {
 private:
 	Command *autonomousCommand;
+	DriveUntilClose *auton;
 	LiveWindow *lw;
+	double dist;
+	double power;
 
 	void RobotInit()
 	{
 		CommandBase::init();
+		dist = SmartDashboard::GetNumber("Autonomous distance", 72);
+		power = SmartDashboard::GetNumber("Autonomous power", -0.2);
 //		autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
+		auton = new DriveUntilClose(power, dist);
 	}
 	
 	void DisabledPeriodic()
@@ -23,8 +30,10 @@ private:
 
 	void AutonomousInit()
 	{
-		if (autonomousCommand != NULL)
-			autonomousCommand->Start();
+
+//		if (autonomousCommand != NULL)
+//			autonomousCommand->Start();
+		auton->Start();
 
 	}
 
@@ -39,8 +48,9 @@ private:
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (autonomousCommand != NULL)
-			autonomousCommand->Cancel();
+//		if (autonomousCommand != NULL)
+//			autonomousCommand->Cancel();
+		auton->Cancel();
 	}
 
 	void TeleopPeriodic()

@@ -14,6 +14,7 @@ public:
 	UltrasonicSensor();
 	void InitDefaultCommand();
 	double GetDistance();
+	double GetVoltage();
 };
 
 #endif

@@ -19,6 +19,7 @@ public:
 	void InitDefaultCommand();
 	void HandleDrive(Joystick& left, Joystick& right);
 	void Stop();
+	void SetDrive(double power);
 };
 
 #endif

@@ -7,10 +7,13 @@ ExampleSubsystem* CommandBase::examplesubsystem = NULL;
 OI* CommandBase::oi = NULL;
 DropDrive* CommandBase::dropdrive = NULL;
 Ringer* CommandBase::ringer = NULL;
+UltrasonicSensor* CommandBase::ultrasonicsensor = NULL;
+PIDTest* CommandBase::pidtest = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
 {
+
 }
 
 CommandBase::CommandBase() :
@@ -27,5 +30,13 @@ void CommandBase::init()
 
 	ringer = new Ringer();
 	dropdrive = new DropDrive();
+	ultrasonicsensor = new UltrasonicSensor();
 	oi = new OI();
+	pidtest = new PIDTest();
+
+	SmartDashboard::PutData(ultrasonicsensor);
+	SmartDashboard::PutData(pidtest);
+	SmartDashboard::PutString("Hello world!", "testing testing 123");
+	SmartDashboard::PutNumber("Distance", ultrasonicsensor->GetDistance());
+	SmartDashboard::PutNumber("Voltage", ultrasonicsensor->GetVoltage());
 }

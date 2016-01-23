@@ -6,6 +6,8 @@
 #include "Subsystems/ExampleSubsystem.h"
 #include "Subsystems/Ringer.h"
 #include "Subsystems/DropDrive.h"
+#include "Subsystems/UltrasonicSensor.h"
+#include "Subsystems/PIDTest.h"
 #include "OI.h"
 #include "WPILib.h"
 
@@ -25,6 +27,8 @@ public:
 	static OI *oi;
 	static DropDrive *dropdrive;
 	static Ringer *ringer;
+	static UltrasonicSensor *ultrasonicsensor;
+	static PIDTest *pidtest;
 };
 
 #endif

@@ -29,5 +29,9 @@ void DropDrive::Stop() {
 	leftMotors.SetSpeed(0);
 	rightMotors.SetSpeed(0);
 }
+
+void DropDrive::SetDrive(double power) {
+	DriveTrain.Drive(power,0);
+}
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
