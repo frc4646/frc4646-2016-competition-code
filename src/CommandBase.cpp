@@ -6,7 +6,6 @@
 ExampleSubsystem* CommandBase::examplesubsystem = NULL;
 OI* CommandBase::oi = NULL;
 DropDrive* CommandBase::dropdrive = NULL;
-Ringer* CommandBase::ringer = NULL;
 UltrasonicSensor* CommandBase::ultrasonicsensor = NULL;
 PIDTest* CommandBase::pidtest = NULL;
 
@@ -28,7 +27,6 @@ void CommandBase::init()
 	// line should be repeated for each subsystem in the project.
 	examplesubsystem = new ExampleSubsystem();
 
-	ringer = new Ringer();
 	dropdrive = new DropDrive();
 	ultrasonicsensor = new UltrasonicSensor();
 	oi = new OI();

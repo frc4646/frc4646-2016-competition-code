@@ -12,7 +12,6 @@ public:
 private:
 	Joystick left;
 	Joystick right;
-	JoystickButton ringer;
 	JoystickButton lowspeed;
 	JoystickButton medspeed;
 	JoystickButton highspeed;
