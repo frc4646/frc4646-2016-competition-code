@@ -7,6 +7,7 @@
 #include "Subsystems/DropDrive.h"
 #include "Subsystems/UltrasonicSensor.h"
 #include "Subsystems/PIDTest.h"
+#include "Subsystems/PhotoelectricSensor.h"
 #include "OI.h"
 #include "WPILib.h"
 
@@ -27,6 +28,7 @@ public:
 	static DropDrive *dropdrive;
 	static UltrasonicSensor *ultrasonicsensor;
 	static PIDTest *pidtest;
+	static PhotoelectricSensor *photoelectricsensor;
 };
 
 #endif

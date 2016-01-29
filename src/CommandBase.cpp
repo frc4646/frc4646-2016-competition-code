@@ -8,6 +8,7 @@ OI* CommandBase::oi = NULL;
 DropDrive* CommandBase::dropdrive = NULL;
 UltrasonicSensor* CommandBase::ultrasonicsensor = NULL;
 PIDTest* CommandBase::pidtest = NULL;
+PhotoelectricSensor* CommandBase::photoelectricsensor = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -26,7 +27,7 @@ void CommandBase::init()
 	// Create a single static instance of all of your subsystems. The following
 	// line should be repeated for each subsystem in the project.
 	examplesubsystem = new ExampleSubsystem();
-
+	photoelectricsensor = new PhotoelectricSensor();
 	dropdrive = new DropDrive();
 	ultrasonicsensor = new UltrasonicSensor();
 	oi = new OI();
@@ -37,4 +38,5 @@ void CommandBase::init()
 	SmartDashboard::PutString("Hello world!", "testing testing 123");
 	SmartDashboard::PutNumber("Distance", ultrasonicsensor->GetDistance());
 	SmartDashboard::PutNumber("Voltage", ultrasonicsensor->GetVoltage());
+	SmartDashboard::PutNumber("PhotoElectric Sensor", photoelectricsensor->GetValue());
 }

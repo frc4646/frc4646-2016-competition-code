@@ -7,7 +7,7 @@
 
 OI::OI():
 left(0),
-right(1),
+right(5),
 lowspeed(&right, 6),
 medspeed(&right, 11),
 highspeed(&right, 8),
