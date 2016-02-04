@@ -7,12 +7,14 @@
 class SpinUp: public CommandBase
 {
 public:
-	SpinUp();
+	SpinUp(double speed);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
+private:
+	double launchSpeed;
 };
 
 #endif
