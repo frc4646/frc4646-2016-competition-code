@@ -1,15 +1,19 @@
 #ifndef COMMAND_BASE_H
 #define COMMAND_BASE_H
 
+#include <Subsystems/PIDTest.h>
 #include <string>
 #include "Commands/Command.h"
-#include "Subsystems/ExampleSubsystem.h"
-#include "Subsystems/DropDrive.h"
-#include "Subsystems/UltrasonicSensor.h"
-#include "Subsystems/PIDTest.h"
-#include "Subsystems/PhotoelectricSensor.h"
-#include "OI.h"
+
 #include "WPILib.h"
+
+class ExampleSubsystem;
+class OI;
+class DropDrive;
+class UltrasonicSensor;
+class LauncherPIDSubsystem;
+class IntakeRoller;
+class IntakeArms;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -27,8 +31,10 @@ public:
 	static OI *oi;
 	static DropDrive *dropdrive;
 	static UltrasonicSensor *ultrasonicsensor;
-	static PIDTest *pidtest;
-	static PhotoelectricSensor *photoelectricsensor;
+	static LauncherPIDSubsystem *leftlauncherpid;
+	static LauncherPIDSubsystem *rightlauncherpid;
+	static IntakeRoller *intakeroller;
+	static IntakeArms *intakearms;
 };
 
 #endif

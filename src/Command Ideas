@@ -1,0 +1,30 @@
+/*
+No analog control of intake rollers
+Intaking in will actuate both the roller as well as the flywheel to suck the boulder in
+Reverse intakes command
+Fold intake up and fold intake down
+Spin up flywheel up to low goal speed and high goal speed
+Fire for low goal and high goal
+
+Method:
+Joystick
+
+Buttons:
+Throttle modifies flywheel fire speeds slightly, middle=0, down=-1, up=1
+Button 7 Emergency fire	
+	Reverse intake command				Done ~ Need power value
+Button 8 Emergency spin up				Done
+Button 1 high goal, fold in intakes
+Button 2 low goal, fold in intakes
+Button 6 Fold out intake				Done						Ports 5,6
+Button 4 Fold in intake					Done
+Button 11 intake						Done ~ Need power value		Ports 0,1
+Button 3 spin up low goal				Done						Ports 3,4
+Button 5 spin up high goal				Done
+Button 9 stop flywheels					Done
+
+Commands:
+
+
+For all: Need ports for motors
+*/

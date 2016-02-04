@@ -1,4 +1,6 @@
 #include "DriveUntilClose.h"
+#include "Subsystems/DropDrive.h"
+#include "Subsystems/UltrasonicSensor.h"
 
 DriveUntilClose::DriveUntilClose(double power, double distance):
 robotPower(power),

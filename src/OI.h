@@ -9,14 +9,21 @@ public:
 	OI();
 	Joystick& GetLeftStick();
 	Joystick& GetRightStick();
+	Joystick& GetMechanismStick();
 private:
 	Joystick left;
 	Joystick right;
+	Joystick mechanism;
 	JoystickButton lowspeed;
 	JoystickButton medspeed;
 	JoystickButton highspeed;
 	JoystickButton stopspeed;
 	JoystickButton reversespeed;
+	JoystickButton emergencyspin;
+	JoystickButton intakeroller;
+	JoystickButton foldintakeout;
+	JoystickButton foldintakein;
+	JoystickButton emergencyfire;
 };
 
 #endif

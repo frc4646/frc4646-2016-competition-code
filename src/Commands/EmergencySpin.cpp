@@ -1,7 +1,6 @@
-#include "MedSpeedCommand.h"
+#include "EmergencySpin.h"
 #include "Subsystems/LauncherPIDSubsystem.h"
-
-MedSpeedCommand::MedSpeedCommand()
+EmergencySpin::EmergencySpin()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -10,41 +9,40 @@ MedSpeedCommand::MedSpeedCommand()
 }
 
 // Called just before this Command runs the first time
-void MedSpeedCommand::Initialize()
+void EmergencySpin::Initialize()
 {
 	//pidtest->ClearError();
-	leftlauncherpid->SetSetpoint(.8);
-	leftlauncherpid->Enable();
-	rightlauncherpid->SetSetpoint(.8);
-	rightlauncherpid->Enable();
-
+	leftlauncherpid->Manual();
+	rightlauncherpid->Manual();
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void MedSpeedCommand::Execute()
+void EmergencySpin::Execute()
 {
 
-
-
+	leftlauncherpid->SetManual(.9);
+	rightlauncherpid->SetManual(.9);
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool MedSpeedCommand::IsFinished()
+bool EmergencySpin::IsFinished()
 {
-	return !(leftlauncherpid->OnTarget() && rightlauncherpid->OnTarget());
+	return true;
 }
 
 // Called once after isFinished returns true
-void MedSpeedCommand::End()
+void EmergencySpin::End()
 {
-
+	leftlauncherpid->SetManual(0);
+	rightlauncherpid->SetManual(0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void MedSpeedCommand::Interrupted()
+void EmergencySpin::Interrupted()
 {
-
+	leftlauncherpid->SetManual(0);
+	rightlauncherpid->SetManual(0);
 }

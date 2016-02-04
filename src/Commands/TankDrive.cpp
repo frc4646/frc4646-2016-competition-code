@@ -1,5 +1,7 @@
 
 #include "TankDrive.h"
+#include "Subsystems/DropDrive.h"
+#include "OI.h"
 
 TankDrive::TankDrive()
 :CommandBase("TankDrive")

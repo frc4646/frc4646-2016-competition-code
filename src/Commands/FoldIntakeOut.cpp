@@ -1,43 +1,39 @@
-#include "StopSpeed.h"
-#include "Subsystems/LauncherPIDSubsystem.h"
-
-StopSpeed::StopSpeed()
+#include "FoldIntakeOut.h"
+#include "Subsystems/IntakeArms.h"
+FoldIntakeOut::FoldIntakeOut()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(leftlauncherpid);
-	Requires(rightlauncherpid);
+	Requires(intakearms);
 }
 
 // Called just before this Command runs the first time
-void StopSpeed::Initialize()
+void FoldIntakeOut::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void StopSpeed::Execute()
+void FoldIntakeOut::Execute()
 {
-	leftlauncherpid->Disable();
-	rightlauncherpid->Disable();
+	intakearms->SetSpeed(0.8);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool StopSpeed::IsFinished()
+bool FoldIntakeOut::IsFinished()
 {
-	return false;
+	return intakearms->GetDownValue();
 }
 
 // Called once after isFinished returns true
-void StopSpeed::End()
+void FoldIntakeOut::End()
 {
-	leftlauncherpid->Disable();
-	rightlauncherpid->Disable();
+	intakearms->SetSpeed(0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void StopSpeed::Interrupted()
+void FoldIntakeOut::Interrupted()
 {
-
+	intakearms->SetSpeed(0);
 }

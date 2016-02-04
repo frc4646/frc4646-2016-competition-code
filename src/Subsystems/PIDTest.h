@@ -13,7 +13,7 @@ public:
 	void InitDefaultCommand();
 private:
 	Victor pidMotor;
-	Encoder pidEncoder;
+	Counter pidEncoder;
 };
 
 #endif

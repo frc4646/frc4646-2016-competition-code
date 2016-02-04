@@ -1,19 +1,23 @@
 #include "ReverseSpeed.h"
+#include "Subsystems/LauncherPIDSubsystem.h"
 
 ReverseSpeed::ReverseSpeed()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(pidtest);
+	Requires(leftlauncherpid);
+	Requires(rightlauncherpid);
 }
 
 // Called just before this Command runs the first time
 void ReverseSpeed::Initialize()
 {
-	pidtest->ClearError();
-	double set = -(pidtest->GetSetpoint());
-	pidtest->SetSetpoint(set);
-	pidtest->Enable();
+//	pidtest->ClearError();
+//	double set = -(pidtest->GetSetpoint());
+//	pidtest->SetSetpoint(set);
+//	pidtest->Enable();
+	leftlauncherpid->Reverse();
+	rightlauncherpid->Reverse();
 
 }
 

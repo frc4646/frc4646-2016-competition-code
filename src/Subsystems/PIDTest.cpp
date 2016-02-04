@@ -1,17 +1,20 @@
-#include "PIDTest.h"
+#include <Subsystems/PIDTest.h>
 #include "../RobotMap.h"
 #include "SmartDashboard/SmartDashboard.h"
 #include "LiveWindow/LiveWindow.h"
 
 PIDTest::PIDTest() :
-		PIDSubsystem("PIDTest", 0.9, 0.06, -0.001),	//P:.9, I:.06, D:-.001
+		PIDSubsystem("PIDTest", .075, 0, -.01),	//P:.9, I:.06, D:-.001
 		pidMotor(3),
-		pidEncoder(0,1)
+		pidEncoder(2)
 {
-	LiveWindow::GetInstance()->AddActuator("Pid test thing", "foo", GetPIDController());
+	LiveWindow::GetInstance()->AddActuator("Pid test thing", "PIDController", GetPIDController());
 	LiveWindow::GetInstance()->AddActuator("Pid test thing", "OutputMotor", pidMotor);
 	LiveWindow::GetInstance()->AddSensor("Pid test thing", "encoder", pidEncoder);
-	pidEncoder.SetDistancePerPulse(1/(71.0*7.0)); 	//7 Pulses per revolution, 1/71 reduction, rotations per second
+	GetPIDController()->SetOutputRange(0,1);
+	SetPIDSourceType(PIDSourceType::kRate);
+	pidEncoder.SetSamplesToAverage(2);
+//	pidEncoder.SetDistancePerPulse(1/(71.0*7.0)); 	//7 Pulses per revolution, 1/71 reduction, rotations per second
 	// Use these to get going:
 	// SetSetpoint() -  Sets where the PID controller should move the system
 	//                  to
@@ -25,7 +28,7 @@ double PIDTest::ReturnPIDInput()
 	// Return your input value for the PID loop
 	// e.g. a sensor, like a potentiometer:
 	// yourPot->SetAverageVoltage() / kYourMaxVoltage;
-	return pidEncoder.GetRate();
+	return ((1.0/(pidEncoder.GetPeriod()))*60.0)/5000;
 }
 
 void PIDTest::UsePIDOutput(double output)

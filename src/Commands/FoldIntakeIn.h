@@ -1,13 +1,13 @@
-#ifndef PhotoelectricCommand_H
-#define PhotoelectricCommand_H
+#ifndef FoldIntakeIn_H
+#define FoldIntakeIn_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class PhotoelectricCommand: public CommandBase
+class FoldIntakeIn: public CommandBase
 {
 public:
-	PhotoelectricCommand();
+	FoldIntakeIn();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
