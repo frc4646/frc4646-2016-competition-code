@@ -1,7 +1,4 @@
 #include "OI.h"
-#include "Commands/LowSpeedCommand.h"
-#include "Commands/MedSpeedCommand.h"
-#include "Commands/HighSpeedCommand.h"
 #include "Commands/EmergencySpin.h"
 #include "Commands/StopSpeed.h"
 #include "Commands/IntakeCommand.h"
@@ -9,13 +6,14 @@
 #include "Commands/FoldIntakeOut.h"
 #include "Commands/FoldIntakeIn.h"
 #include "Commands/ReverseIntakeCommand.h"
+#include "Commands/SpinUp.h"
+#include "Commands/Launch.h"
 
 OI::OI():
 left(0),
 right(5),
 mechanism(1),
 lowspeed(&mechanism, 3),
-medspeed(&right, 11),
 highspeed(&mechanism, 5),
 stopspeed(&mechanism, 9),
 reversespeed(&right, 10),
@@ -23,12 +21,13 @@ emergencyspin(&mechanism, 8),
 intakeroller(&mechanism, 11),
 foldintakeout(&mechanism, 6),
 foldintakein(&mechanism,4),
-emergencyfire(&mechanism,7)
-
+emergencyfire(&mechanism,7),
+launchhigh(&mechanism,1),
+launchlow(&mechanism,2)
 {
 	// Process operator interface input here.
-	lowspeed.WhenPressed(new LowSpeedCommand());
-	highspeed.WhenPressed(new HighSpeedCommand());
+	lowspeed.WhenPressed(new SpinUp(0.4));
+	highspeed.WhenPressed(new SpinUp(1));
 	stopspeed.WhileHeld(new StopSpeed());
 	emergencyspin.WhileHeld(new EmergencySpin());
 	intakeroller.WhileHeld(new IntakeCommand());
@@ -36,6 +35,8 @@ emergencyfire(&mechanism,7)
 	foldintakein.WhenPressed(new FoldIntakeIn());
 	//reversespeed.WhileHeld(new ReverseSpeed());
 	emergencyfire.WhileHeld(new ReverseIntakeCommand());
+	launchhigh.WhenPressed(new Launch(1));
+	launchlow.WhenPressed(new Launch(0.4));
 
 }
 Joystick& OI::GetLeftStick() {

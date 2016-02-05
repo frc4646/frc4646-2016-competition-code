@@ -1,10 +1,10 @@
-#include "HighGoalFire.h"
+#include <Commands/Launch.h>
 #include "FoldIntakeIn.h"
-#include "HighSpeedCommand.h"
+#include "SpinUp.h"
 #include "ReverseIntakeCommand.h"
 #include "StopSpeed.h"
 
-HighGoalFire::HighGoalFire()
+Launch::Launch(double speed)
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -23,7 +23,7 @@ HighGoalFire::HighGoalFire()
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 	AddParallel(new FoldIntakeIn());
-	AddParallel(new HighSpeedCommand());
+	AddParallel(new SpinUp(speed));
 	AddSequential(new ReverseIntakeCommand(),1.5);
 	AddSequential(new WaitCommand(1));
 	AddSequential(new StopSpeed());

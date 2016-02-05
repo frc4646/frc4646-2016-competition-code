@@ -15,7 +15,6 @@ private:
 	Joystick right;
 	Joystick mechanism;
 	JoystickButton lowspeed;
-	JoystickButton medspeed;
 	JoystickButton highspeed;
 	JoystickButton stopspeed;
 	JoystickButton reversespeed;
@@ -24,6 +23,8 @@ private:
 	JoystickButton foldintakeout;
 	JoystickButton foldintakein;
 	JoystickButton emergencyfire;
+	JoystickButton launchhigh;
+	JoystickButton launchlow;
 };
 
 #endif
