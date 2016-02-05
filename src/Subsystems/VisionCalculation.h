@@ -9,13 +9,13 @@ class VisionCalculation: public Subsystem
 
 public:
 	VisionCalculation();
+	~VisionCalculation();
 	void InitDefaultCommand();
 	int GetGoalDistanceInches();
 	float RobotToGoalAngle();
 	float GoalToRobotAngle();
 private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
+	std::shared_ptr<NetworkTable> networkTable;
 };
 
 #endif
