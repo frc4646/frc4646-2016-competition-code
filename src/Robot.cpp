@@ -3,12 +3,16 @@
 #include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
 #include "Commands/DriveUntilClose.h"
+#include "Commands/DriveForTime.h"
+#include "Commands/FiringAuto.h"
+#include "Commands/CrossDefenseAuto.h"
+#include "Commands/SpyAuto.h"
 
 class Robot: public IterativeRobot
 {
 private:
 	Command *autonomousCommand;
-	DriveUntilClose *auton;
+	SendableChooser *chooser;
 	LiveWindow *lw;
 	double dist;
 	double power;
@@ -20,7 +24,12 @@ private:
 		power = SmartDashboard::GetNumber("Autonomous power", -0.2);
 //		autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
-		auton = new DriveUntilClose(power, dist);
+		chooser = new SendableChooser();
+		chooser->AddDefault("Do Nothing", new DriveForTime(0,0));
+		chooser->AddObject("Firing Auto", new FiringAuto());
+		chooser->AddObject("Crossing Auto", new CrossDefenseAuto());
+		chooser->AddObject("Spy Bot Auto", new SpyAuto());
+
 	}
 	
 	void DisabledPeriodic()
@@ -30,11 +39,9 @@ private:
 
 	void AutonomousInit()
 	{
-
-//		if (autonomousCommand != NULL)
-//			autonomousCommand->Start();
-		auton->Start();
-
+		autonomousCommand = (Command*) chooser->GetSelected();
+				if (autonomousCommand != NULL)
+					autonomousCommand->Start();
 	}
 
 	void AutonomousPeriodic()
@@ -50,7 +57,8 @@ private:
 		// this line or comment it out.
 //		if (autonomousCommand != NULL)
 //			autonomousCommand->Cancel();
-		auton->Cancel();
+		if (autonomousCommand != NULL)
+			autonomousCommand->Cancel();
 	}
 
 	void TeleopPeriodic()

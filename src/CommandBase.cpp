@@ -5,6 +5,8 @@
 #include "Subsystems/LauncherPIDSubsystem.h"
 #include "Subsystems/IntakeRoller.h"
 #include "Subsystems/IntakeArms.h"
+#include "Subsystems/VisionCalculation.h"
+#include "Subsystems/LEDSystem.h"
 #include "OI.h"
 #include "Commands/Scheduler.h"
 
@@ -17,6 +19,8 @@ LauncherPIDSubsystem* CommandBase::leftlauncherpid = NULL;
 LauncherPIDSubsystem* CommandBase::rightlauncherpid = NULL;
 IntakeRoller* CommandBase::intakeroller = NULL;
 IntakeArms* CommandBase::intakearms = NULL;
+VisionCalculation* CommandBase::visioncalculation = NULL;
+LEDSystem* CommandBase::ledsystem = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -38,10 +42,12 @@ void CommandBase::init()
 	dropdrive = new DropDrive();
 	ultrasonicsensor = new UltrasonicSensor();
 	oi = new OI();
-	leftlauncherpid = new LauncherPIDSubsystem("Left", 3,2);
-	rightlauncherpid = new LauncherPIDSubsystem("Right", 4,3);
+	leftlauncherpid = new LauncherPIDSubsystem("Left", 8,2);
+	rightlauncherpid = new LauncherPIDSubsystem("Right", 9,3);
 	intakeroller = new IntakeRoller();
 	intakearms = new IntakeArms();
+	visioncalculation = new VisionCalculation();
+	ledsystem = new LEDSystem();
 
 	SmartDashboard::PutData(ultrasonicsensor);
 	SmartDashboard::PutData(leftlauncherpid);
@@ -49,4 +55,5 @@ void CommandBase::init()
 	SmartDashboard::PutString("Hello world!", "testing testing 123");
 	SmartDashboard::PutNumber("Distance", ultrasonicsensor->GetDistance());
 	SmartDashboard::PutNumber("Voltage", ultrasonicsensor->GetVoltage());
+	SmartDashboard::PutNumber("LeftPID", leftlauncherpid->ReturnPIDInput());
 }

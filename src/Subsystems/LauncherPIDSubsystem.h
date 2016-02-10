@@ -16,7 +16,7 @@ public:
 	void SetManual(double power);
 
 private:
-	Talon pidMotor;
+	Victor pidMotor;
 	Counter pidEncoder;
 	double reverseMultiplier;
 };
