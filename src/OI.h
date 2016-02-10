@@ -25,6 +25,9 @@ private:
 	JoystickButton emergencyfire;
 	JoystickButton launchhigh;
 	JoystickButton launchlow;
+	JoystickButton fireState;
+	JoystickButton alignState;
+	JoystickButton outrangeState;
 };
 
 #endif

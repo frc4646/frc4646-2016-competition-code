@@ -1,8 +1,8 @@
-#include "DriveUntilClose.h"
+#include "DriveUntilFar.h"
 #include "Subsystems/DropDrive.h"
 #include "Subsystems/UltrasonicSensor.h"
 
-DriveUntilClose::DriveUntilClose(double power, double distance):
+DriveUntilFar::DriveUntilFar(double power, double distance):
 robotPower(power),
 sensorDistance(distance)
 {
@@ -13,32 +13,32 @@ sensorDistance(distance)
 }
 
 // Called just before this Command runs the first time
-void DriveUntilClose::Initialize()
+void DriveUntilFar::Initialize()
 {
 	dropdrive->SetDrive(robotPower, 0);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void DriveUntilClose::Execute()
+void DriveUntilFar::Execute()
 {
 	dropdrive->SetDrive(robotPower, 0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool DriveUntilClose::IsFinished()
+bool DriveUntilFar::IsFinished()
 {
-	return ultrasonicsensor->GetDistance()<sensorDistance;
+	return ultrasonicsensor->GetDistance()>sensorDistance;
 }
 
 // Called once after isFinished returns true
-void DriveUntilClose::End()
+void DriveUntilFar::End()
 {
 	dropdrive->SetDrive(0, 0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void DriveUntilClose::Interrupted()
+void DriveUntilFar::Interrupted()
 {
 	End();
 }

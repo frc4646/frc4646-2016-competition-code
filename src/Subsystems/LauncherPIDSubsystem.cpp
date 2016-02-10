@@ -12,7 +12,7 @@ LauncherPIDSubsystem::LauncherPIDSubsystem(std::string side, int motorPin, int e
 	LiveWindow::GetInstance()->AddActuator(side + "LauncherPID", side + "PIDController", GetPIDController());
 	LiveWindow::GetInstance()->AddActuator(side + "LauncherPID", side + "OutputMotor", pidMotor);
 	LiveWindow::GetInstance()->AddSensor(side + "LauncherPID", side + "Encoder", pidEncoder);
-	SmartDashboard::PutData(side+"LauncherPidController", GetPIDController().get());
+//	SmartDashboard::PutData(side+"LauncherPidController", GetPIDController().get());
 	GetPIDController()->SetOutputRange(0,1);
 	SetPIDSourceType(PIDSourceType::kDisplacement);
 	pidEncoder.SetSamplesToAverage(2);
@@ -28,7 +28,7 @@ double LauncherPIDSubsystem::ReturnPIDInput()
 	// e.g. a sensor, like a potentiometer:
 	// yourPot->SetAverageVoltage() / kYourMaxVoltage;
 	double speed = (1.0/(pidEncoder.GetPeriod()))*60.0;
-	SmartDashboard::PutNumber(GetName() + "RPMs", speed);
+//	SmartDashboard::PutNumber(GetName() + "RPMs", speed);
 	return (speed)/5000;
 }
 

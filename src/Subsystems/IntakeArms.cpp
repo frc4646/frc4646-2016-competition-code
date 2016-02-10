@@ -3,8 +3,8 @@
 
 IntakeArms::IntakeArms() :
 		Subsystem("ExampleSubsystem"),
-		armright(5),
-		armleft(6),
+		armright(4),
+		armleft(5),
 		LimitDown(new DigitalInput(4)),
 		LimitUp(new DigitalInput(5))
 {

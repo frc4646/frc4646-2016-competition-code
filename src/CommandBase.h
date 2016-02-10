@@ -1,7 +1,6 @@
 #ifndef COMMAND_BASE_H
 #define COMMAND_BASE_H
 
-#include <Subsystems/PIDTest.h>
 #include <string>
 #include "Commands/Command.h"
 
@@ -14,6 +13,8 @@ class UltrasonicSensor;
 class LauncherPIDSubsystem;
 class IntakeRoller;
 class IntakeArms;
+class VisionCalculation;
+class LEDSystem;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -35,6 +36,9 @@ public:
 	static LauncherPIDSubsystem *rightlauncherpid;
 	static IntakeRoller *intakeroller;
 	static IntakeArms *intakearms;
+	static VisionCalculation *visioncalculation;
+	static LEDSystem *ledsystem;
 };
+
 
 #endif

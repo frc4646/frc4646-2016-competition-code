@@ -3,8 +3,8 @@
 
 IntakeRoller::IntakeRoller() :
 		Subsystem("ExampleSubsystem"),
-		right(0),
-		left(1)
+		right(6),
+		left(7)
 {
 
 }

@@ -11,11 +11,16 @@ public:
 	VisionCalculation();
 	~VisionCalculation();
 	void InitDefaultCommand();
-	int GetGoalDistanceInches();
+	float GetGoalDistance();
 	float RobotToGoalAngle();
 	float GoalToRobotAngle();
 private:
 	std::shared_ptr<NetworkTable> networkTable;
+	float goalXPos;
+	float goalHeight;
+	std::vector<double> xVals;
+	std::vector<double> distVals;
 };
 
 #endif
+
