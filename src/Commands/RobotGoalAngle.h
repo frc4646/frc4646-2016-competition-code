@@ -13,8 +13,11 @@ public:
 	bool IsFinished();
 	void End();
 	void Interrupted();
+	void isInRange();
 private:
 	float turning;
+	float robotTurn;
+	int confidence;
 };
 
 #endif

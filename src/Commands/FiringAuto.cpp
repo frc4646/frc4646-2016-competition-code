@@ -23,10 +23,12 @@ FiringAuto::FiringAuto()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddParallel(new DriveForTime(.5,0),3);
+	AddParallel(new DriveForTime(.3,0),3.5);
 	AddSequential(new DriveUntilClose(.5,72));
-	AddSequential(new RobotGoalAngle());
-	AddSequential(new RobotGoalDistance());
-	AddSequential(new Launch(1));
+	AddParallel(new DriveForTime(.3,1),1);
+//	AddSequential(new RobotGoalAngle());
+//	AddSequential(new RobotGoalDistance());
+//	AddSequential(new RobotGoalAngle());
+//	AddSequential(new Launch(1));
 
 }

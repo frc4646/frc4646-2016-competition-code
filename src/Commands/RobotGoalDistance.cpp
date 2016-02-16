@@ -5,8 +5,6 @@
 
 RobotGoalDistance::RobotGoalDistance()
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(dropdrive);
 	Requires(visioncalculation);
 	Requires(ledsystem);
@@ -23,18 +21,15 @@ void RobotGoalDistance::Execute()
 {
 	heightPixels = visioncalculation->GetGoalDistance();
 	SmartDashboard::PutNumber("Target Height", visioncalculation->GetGoalDistance());
-	if(heightPixels<70){
-		dropdrive->SetDrive(.5,0);
-		ledsystem->SendLEDState(LEDSystem::LEDstate::aligned);
+	if(heightPixels<45){
+		dropdrive->SetDrive(.2,0);
 	}
-	else if(heightPixels>100){
-		dropdrive->SetDrive(-.5,0);
-		ledsystem->SendLEDState(LEDSystem::LEDstate::aligned);
+	else if(heightPixels>50){
+		dropdrive->SetDrive(-.2,0);
 
 	}
 	else{
 		dropdrive->SetDrive(0,0);
-		ledsystem->SendLEDState(LEDSystem::LEDstate::outrange);
 
 	}
 }
@@ -42,7 +37,7 @@ void RobotGoalDistance::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool RobotGoalDistance::IsFinished()
 {
-	return (heightPixels<100 && heightPixels>70);
+	return (heightPixels<50 && heightPixels>45);
 }
 
 // Called once after isFinished returns true

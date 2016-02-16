@@ -43,7 +43,7 @@ void CommandBase::init()
 	ultrasonicsensor = new UltrasonicSensor();
 	oi = new OI();
 	leftlauncherpid = new LauncherPIDSubsystem("Left", 8,2);
-	rightlauncherpid = new LauncherPIDSubsystem("Right", 9,3);
+	rightlauncherpid = new LauncherPIDSubsystem("Right", 9,4);
 	intakeroller = new IntakeRoller();
 	intakearms = new IntakeArms();
 	visioncalculation = new VisionCalculation();
@@ -55,5 +55,5 @@ void CommandBase::init()
 	SmartDashboard::PutString("Hello world!", "testing testing 123");
 	SmartDashboard::PutNumber("Distance", ultrasonicsensor->GetDistance());
 	SmartDashboard::PutNumber("Voltage", ultrasonicsensor->GetVoltage());
-	SmartDashboard::PutNumber("LeftPID", leftlauncherpid->ReturnPIDInput());
+//	SmartDashboard::PutNumber("LeftPID", leftlauncherpid->ReturnPIDInput());
 }

@@ -24,10 +24,10 @@ foldintakeout(&mechanism, 6),
 foldintakein(&mechanism,4),
 emergencyfire(&mechanism,7),
 launchhigh(&mechanism,1),
-launchlow(&mechanism,2),
-fireState(&left, 1),
-alignState(&left, 2),
-outrangeState(&left, 3)
+launchlow(&mechanism,2)
+//fireState(&left, 1),
+//alignState(&left, 2),
+//outrangeState(&left, 3)
 
 {
 	// Process operator interface input here.
@@ -42,9 +42,11 @@ outrangeState(&left, 3)
 	emergencyfire.WhileHeld(new ReverseIntakeCommand());
 	launchhigh.WhenPressed(new Launch(1));
 	launchlow.WhenPressed(new Launch(0.4));
-	fireState.WhenPressed(new SendI2C(LEDSystem::LEDstate::fire));
-	alignState.WhenPressed(new SendI2C(LEDSystem::LEDstate::aligned));
-	outrangeState.WhenPressed(new SendI2C(LEDSystem::LEDstate::outrange));
+//	fireState.WhenPressed(new SendI2C(LEDSystem::LEDstate::autonomous));
+//	alignState.WhenPressed(new SendI2C(LEDSystem::LEDstate::teleop));
+//	outrangeState.WhenPressed(new SendI2C(LEDSystem::LEDstate::disabled));
+
+
 
 }
 Joystick& OI::GetLeftStick() {

@@ -1,12 +1,13 @@
 #include "RobotGoalAngle.h"
 #include "Subsystems/VisionCalculation.h"
 #include "Subsystems/DropDrive.h"
+#include <algorithm>
 
 RobotGoalAngle::RobotGoalAngle():
-turning(0)
+turning(0),
+robotTurn(0),
+confidence(0)
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(visioncalculation);
 	Requires(dropdrive);
 }
@@ -21,15 +22,28 @@ void RobotGoalAngle::Initialize()
 void RobotGoalAngle::Execute()
 {
 	turning = visioncalculation->RobotToGoalAngle()/320.0;
-	dropdrive->SetDrive(turning, 1);
-	SmartDashboard::PutNumber("Goal X Position", (double)visioncalculation->RobotToGoalAngle());
+	if (turning > 0.1)
+	{
+		robotTurn = 0.12;
+	}
+	else if (turning < -0.1)
+	{
+		robotTurn = -0.12;
+	}
+	else
+	{
+		robotTurn = 0;
+	}
 
+	dropdrive->SetDrive(robotTurn, 1);
+	SmartDashboard::PutNumber("Goal X Position", robotTurn);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool RobotGoalAngle::IsFinished()
 {
-	return (turning<0.1 && turning>-0.1);
+	isInRange();
+	return confidence > 3;
 }
 
 // Called once after isFinished returns true
@@ -43,4 +57,15 @@ void RobotGoalAngle::End()
 void RobotGoalAngle::Interrupted()
 {
 	End();
+}
+
+void RobotGoalAngle::isInRange() {
+	if (turning < 0.1 && turning > -0.1)
+	{
+		confidence++;
+	}
+	else
+	{
+		confidence = 0;
+	}
 }

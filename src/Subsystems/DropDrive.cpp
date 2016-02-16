@@ -5,11 +5,12 @@
 
 DropDrive::DropDrive() :
 		Subsystem("DropDrive"),
-		leftMotors(1),
-		rightMotors(0),
+		leftMotors(0),
+		rightMotors(1),
 		DriveTrain(leftMotors, rightMotors)
 {
-
+	leftMotors.SetInverted(false);
+	rightMotors.SetInverted(false);
 }
 
 void DropDrive::InitDefaultCommand()
@@ -19,10 +20,13 @@ void DropDrive::InitDefaultCommand()
 	SetDefaultCommand(new TankDrive());
 	DriveTrain.SetSafetyEnabled(false);
 
+
+
+
 }
 
 void DropDrive::HandleDrive(Joystick& left, Joystick& right) {
-	DriveTrain.TankDrive(left.GetRawAxis(1)*1.0, right.GetRawAxis(1)*1.0);
+	DriveTrain.TankDrive(left.GetRawAxis(1)*-1.0, right.GetRawAxis(1)*-1.0);
 }
 
 void DropDrive::Stop() {

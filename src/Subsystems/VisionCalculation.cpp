@@ -21,9 +21,7 @@ VisionCalculation::~VisionCalculation()
 
 void VisionCalculation::InitDefaultCommand()
 {
-	SetDefaultCommand(new RobotGoalDistance());
-	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
+	//SetDefaultCommand(new RobotGoalDistance());
 }
 
 float VisionCalculation::GetGoalDistance()
@@ -58,10 +56,11 @@ float VisionCalculation::RobotToGoalAngle()
 		goalXPos = 320;
 	}
 	return goalXPos - 320;
-//	return 0.0;
 }
 
 float VisionCalculation::GoalToRobotAngle()
 {
+	//TODO: Possible calculate the actual angle here. This will include 3D pose estimation from a 2D image. Difficulty - moderate.
+	//      Alternative is to just check the height of the left side of the rectangular goal vs the right side and if the left is larger we need to drive right and vice versa.
 	return 0.0;
 }

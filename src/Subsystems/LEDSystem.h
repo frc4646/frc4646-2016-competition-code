@@ -17,7 +17,7 @@ private:
 public:
 	LEDSystem();
 	void InitDefaultCommand();
-	enum LEDstate { outrange, inrange, aligned, fire };
+	enum LEDstate { notarget, outrange, misaligned, fire, disabled, autonomous, teleop};
 	void SendLEDState(LEDstate state);
 };
 
