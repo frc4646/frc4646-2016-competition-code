@@ -4,6 +4,7 @@
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 #include "Talon.h"
+#include "AnalogGyro.h"
 
 class DropDrive: public Subsystem
 {
@@ -13,6 +14,7 @@ private:
 	Talon leftMotors;
 	Talon rightMotors;
 	RobotDrive DriveTrain;
+	AnalogGyro gyro;
 
 public:
 	DropDrive();
@@ -20,6 +22,8 @@ public:
 	void HandleDrive(Joystick& left, Joystick& right);
 	void Stop();
 	void SetDrive(double power, double curve);
+	double GetHeading();
+	void ResetGyro();
 };
 
 #endif

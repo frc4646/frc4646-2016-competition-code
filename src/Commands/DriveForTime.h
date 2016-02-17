@@ -16,6 +16,7 @@ public:
 private:
 	double drivePower;
 	double driveCurve;
+	double gyroCurve;
 };
 
 #endif

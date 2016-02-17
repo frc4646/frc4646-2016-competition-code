@@ -13,13 +13,15 @@ driveCurve(curve)
 // Called just before this Command runs the first time
 void DriveForTime::Initialize()
 {
-
+	dropdrive->ResetGyro();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveForTime::Execute()
 {
-	dropdrive->SetDrive(drivePower, driveCurve);
+	gyroCurve = dropdrive->GetHeading()/90.0;
+	dropdrive->SetDrive(drivePower, driveCurve - gyroCurve);
+	SmartDashboard::PutNumber("Gyro Heading", dropdrive->GetHeading());
 }
 
 // Make this return true when this Command no longer needs to run execute()

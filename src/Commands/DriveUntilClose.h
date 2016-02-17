@@ -16,6 +16,7 @@ public:
 private:
 	double robotPower;
 	double sensorDistance;
+	double gyroCurve;
 };
 
 #endif

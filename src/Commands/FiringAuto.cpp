@@ -3,7 +3,9 @@
 #include "DriveUntilClose.h"
 #include "RobotGoalAngle.h"
 #include "RobotGoalDistance.h"
+#include "TurnForAngle.h"
 #include "Launch.h"
+#include "EmergencySpin.h"
 
 FiringAuto::FiringAuto()
 {
@@ -23,12 +25,13 @@ FiringAuto::FiringAuto()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddParallel(new DriveForTime(.3,0),3.5);
-	AddSequential(new DriveUntilClose(.5,72));
-	AddParallel(new DriveForTime(.3,1),1);
-//	AddSequential(new RobotGoalAngle());
-//	AddSequential(new RobotGoalDistance());
-//	AddSequential(new RobotGoalAngle());
+	AddSequential(new DriveForTime(.3,0),4.5);
+	AddSequential(new DriveUntilClose(.4,84));
+	AddSequential(new TurnForAngle(.3, 60));
+	AddSequential(new RobotGoalAngle());
+	AddSequential(new RobotGoalDistance());
+	AddSequential(new RobotGoalAngle());
+	AddSequential(new EmergencySpin(), 2);
 //	AddSequential(new Launch(1));
 
 }

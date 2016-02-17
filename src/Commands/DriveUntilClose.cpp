@@ -15,13 +15,15 @@ sensorDistance(distance)
 // Called just before this Command runs the first time
 void DriveUntilClose::Initialize()
 {
-	dropdrive->SetDrive(robotPower, 0);
+//	dropdrive->ResetGyro();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveUntilClose::Execute()
 {
-	dropdrive->SetDrive(robotPower, 0);
+	gyroCurve = dropdrive->GetHeading()/90.0;
+	dropdrive->SetDrive(robotPower, -gyroCurve);
+	SmartDashboard::PutNumber("Gyro Heading", dropdrive->GetHeading());
 }
 
 // Make this return true when this Command no longer needs to run execute()
