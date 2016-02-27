@@ -3,17 +3,18 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
+#include "PinEnums.h"
 
 class IntakeRoller: public Subsystem
 {
 
 public:
-	IntakeRoller();
+	IntakeRoller(MotorPin rollerPort);
 	void InitDefaultCommand();
 	void SetSpeed(double power);
+	void SendSD();
 private:
-	Victor right;
-	Victor left;
+	Victor roller;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 };

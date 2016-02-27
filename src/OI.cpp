@@ -9,6 +9,7 @@
 #include "Commands/SpinUp.h"
 #include "Commands/Launch.h"
 #include "Commands/SendI2C.h"
+#include "Commands/ForceFold.h"
 
 OI::OI():
 left(0),
@@ -24,6 +25,7 @@ foldintakeout(&mechanism, 6),
 foldintakein(&mechanism,4),
 emergencyfire(&mechanism,7),
 launchhigh(&mechanism,1),
+emergencyraise(&mechanism,10),
 launchlow(&mechanism,2)
 //fireState(&left, 1),
 //alignState(&left, 2),
@@ -36,8 +38,9 @@ launchlow(&mechanism,2)
 	stopspeed.WhileHeld(new StopSpeed());
 	emergencyspin.WhileHeld(new EmergencySpin());
 	intakeroller.WhileHeld(new IntakeCommand());
-	foldintakeout.WhenPressed(new FoldIntakeOut());
-	foldintakein.WhenPressed(new FoldIntakeIn());
+	foldintakeout.WhileHeld(new FoldIntakeOut());
+	foldintakein.WhileHeld(new FoldIntakeIn());
+	emergencyraise.WhileHeld(new ForceFold());
 	//reversespeed.WhileHeld(new ReverseSpeed());
 	emergencyfire.WhileHeld(new ReverseIntakeCommand());
 	launchhigh.WhenPressed(new Launch(1));
@@ -57,4 +60,8 @@ Joystick& OI::GetRightStick() {
 }
 Joystick& OI::GetMechanismStick() {
 	return mechanism;
+}
+
+double OI::GetIntakeSpeed() {
+	return (mechanism.GetRawAxis(3)*-0.4) + 0.6;
 }

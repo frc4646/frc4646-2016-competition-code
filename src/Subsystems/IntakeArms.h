@@ -3,23 +3,30 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
+#include "PinEnums.h"
 
 class IntakeArms: public Subsystem
 {
 
 public:
-	IntakeArms();
+	IntakeArms(MotorPin motorPort, DIOPin limitPort, DIOPin leftEncoderA, DIOPin leftEncoderB, DIOPin rightEncoderA, DIOPin rightEncoderB);
 	void InitDefaultCommand();
-	bool GetDownValue();
 	bool GetUpValue();
+	bool IsFullyOut();
 	void SetSpeed(double power);
+	void Raise();
+	void ForceRaise();
+	void Lower();
+	void SendSD();
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	Victor armright;
-	Victor armleft;
-	std::unique_ptr<DigitalInput> LimitDown;
+	Victor arms;
 	std::unique_ptr<DigitalInput> LimitUp;
+	Encoder LeftEncoder;
+	Encoder RightEncoder;
+	bool MotorsUnbalanced();
+
 };
 
 #endif

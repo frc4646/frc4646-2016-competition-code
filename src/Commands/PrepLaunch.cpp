@@ -1,11 +1,8 @@
-#include <Commands/Launch.h>
+#include "PrepLaunch.h"
 #include "FoldIntakeIn.h"
 #include "SpinUp.h"
-#include "ReverseIntakeCommand.h"
-#include "StopSpeed.h"
-#include "PrepLaunch.h"
 
-Launch::Launch(double speed)
+PrepLaunch::PrepLaunch(double speed)
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -23,10 +20,6 @@ Launch::Launch(double speed)
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-//	AddParallel(new FoldIntakeIn(), 1.5);
-//	AddSequential(new SpinUp(speed), 1.5);
-	AddSequential(new PrepLaunch(speed), 1.5);
-	AddSequential(new ReverseIntakeCommand(),1);
-//	AddSequential(new WaitCommand(1));
-	AddSequential(new StopSpeed());
+	AddParallel(new FoldIntakeIn());
+	AddParallel(new SpinUp(speed));
 }

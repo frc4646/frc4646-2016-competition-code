@@ -64,3 +64,8 @@ float VisionCalculation::GoalToRobotAngle()
 	//      Alternative is to just check the height of the left side of the rectangular goal vs the right side and if the left is larger we need to drive right and vice versa.
 	return 0.0;
 }
+
+void VisionCalculation::SendSD() {
+	SmartDashboard::PutNumber("Robot to goal distance", GetGoalDistance());
+	SmartDashboard::PutNumber("Robot to goal angle", RobotToGoalAngle());
+}

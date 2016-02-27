@@ -6,7 +6,6 @@
 
 #include "WPILib.h"
 
-class ExampleSubsystem;
 class OI;
 class DropDrive;
 class UltrasonicSensor;
@@ -15,6 +14,7 @@ class IntakeRoller;
 class IntakeArms;
 class VisionCalculation;
 class LEDSystem;
+class SendSmartDash;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -28,7 +28,6 @@ public:
 	CommandBase();
 	static void init();
 	// Create a single static instance of all of your subsystems
-	static ExampleSubsystem *examplesubsystem;
 	static OI *oi;
 	static DropDrive *dropdrive;
 	static UltrasonicSensor *ultrasonicsensor;
@@ -38,6 +37,7 @@ public:
 	static IntakeArms *intakearms;
 	static VisionCalculation *visioncalculation;
 	static LEDSystem *ledsystem;
+	static SendSmartDash *sendsmartdash;
 };
 
 

@@ -1,39 +1,40 @@
-#include "FoldIntakeIn.h"
-#include "Subsystems/IntakeArms.h"
-FoldIntakeIn::FoldIntakeIn()
+#include "ResetGyro.h"
+#include "Subsystems/DropDrive.h"
+
+ResetGyro::ResetGyro()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(intakearms);
+	Requires(dropdrive);
 }
 
 // Called just before this Command runs the first time
-void FoldIntakeIn::Initialize()
+void ResetGyro::Initialize()
 {
-
+	dropdrive->ResetGyro();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void FoldIntakeIn::Execute()
+void ResetGyro::Execute()
 {
-	intakearms->Raise();
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool FoldIntakeIn::IsFinished()
+bool ResetGyro::IsFinished()
 {
-	return intakearms->GetUpValue();
+	return true;
 }
 
 // Called once after isFinished returns true
-void FoldIntakeIn::End()
+void ResetGyro::End()
 {
-	intakearms->SetSpeed(0);
+
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void FoldIntakeIn::Interrupted()
+void ResetGyro::Interrupted()
 {
-	intakearms->SetSpeed(0);
+
 }

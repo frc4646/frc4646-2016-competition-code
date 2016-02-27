@@ -1,14 +1,16 @@
-#include "ExampleSubsystem.h"
+#include <Subsystems/SendSmartDash.h>
 #include "../RobotMap.h"
+#include "Commands/SendDash.h"
 
-ExampleSubsystem::ExampleSubsystem() :
-		Subsystem("ExampleSubsystem")
+SendSmartDash::SendSmartDash() :
+		Subsystem("SendSmartDash")
 {
 
 }
 
-void ExampleSubsystem::InitDefaultCommand()
+void SendSmartDash::InitDefaultCommand()
 {
+	SetDefaultCommand (new SendDash());
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
 }

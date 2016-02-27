@@ -14,6 +14,7 @@ public:
 	float GetGoalDistance();
 	float RobotToGoalAngle();
 	float GoalToRobotAngle();
+	void SendSD();
 private:
 	std::shared_ptr<NetworkTable> networkTable;
 	float goalXPos;

@@ -1,6 +1,6 @@
-#include "FoldIntakeIn.h"
+#include "ForceFold.h"
 #include "Subsystems/IntakeArms.h"
-FoldIntakeIn::FoldIntakeIn()
+ForceFold::ForceFold()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -8,32 +8,32 @@ FoldIntakeIn::FoldIntakeIn()
 }
 
 // Called just before this Command runs the first time
-void FoldIntakeIn::Initialize()
+void ForceFold::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void FoldIntakeIn::Execute()
+void ForceFold::Execute()
 {
-	intakearms->Raise();
+	intakearms->ForceRaise();
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool FoldIntakeIn::IsFinished()
+bool ForceFold::IsFinished()
 {
 	return intakearms->GetUpValue();
 }
 
 // Called once after isFinished returns true
-void FoldIntakeIn::End()
+void ForceFold::End()
 {
 	intakearms->SetSpeed(0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void FoldIntakeIn::Interrupted()
+void ForceFold::Interrupted()
 {
 	intakearms->SetSpeed(0);
 }

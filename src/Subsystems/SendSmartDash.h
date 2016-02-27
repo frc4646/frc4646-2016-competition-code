@@ -1,16 +1,16 @@
-#ifndef EXAMPLE_SUBSYSTEM_H
-#define EXAMPLE_SUBSYSTEM_H
+#ifndef SEND_SMART_DASH_H
+#define SEND_SMART_DASH_H
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 
-class ExampleSubsystem: public Subsystem
+class SendSmartDash: public Subsystem
 {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
-	ExampleSubsystem();
+	SendSmartDash();
 	void InitDefaultCommand();
 };
 

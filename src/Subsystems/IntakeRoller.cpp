@@ -1,11 +1,11 @@
 #include "IntakeRoller.h"
 #include "../RobotMap.h"
 
-IntakeRoller::IntakeRoller() :
+IntakeRoller::IntakeRoller(MotorPin rollerPort) :
 		Subsystem("ExampleSubsystem"),
-		right(6),
-		left(7)
+		roller(rollerPort)
 {
+	LiveWindow::GetInstance()->AddActuator("IntakeRoller", "RollerMotor", roller);
 
 }
 
@@ -17,8 +17,12 @@ void IntakeRoller::InitDefaultCommand()
 
 void IntakeRoller::SetSpeed(double power)
 {
-	right.Set(power);
-	left.Set(power);
+	roller.Set(power);
 }
+
+void IntakeRoller::SendSD() {
+	SmartDashboard::PutNumber("Roller speed", roller.Get());
+}
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

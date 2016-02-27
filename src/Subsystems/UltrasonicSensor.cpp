@@ -2,10 +2,11 @@
 #include "../RobotMap.h"
 #include "Commands/UltrasonicCommand.h"
 
-UltrasonicSensor::UltrasonicSensor() :
+UltrasonicSensor::UltrasonicSensor(AnalogPin port) :
 		Subsystem("ExampleSubsystem"),
-		DistSensor(new AnalogInput(0))
+		DistSensor(new AnalogInput(port))
 {
+	LiveWindow::GetInstance()->AddSensor("UltrasonicSensor", "Sensor", DistSensor.get());
 
 }
 
@@ -22,6 +23,10 @@ double UltrasonicSensor::GetDistance() {
 
 double UltrasonicSensor::GetVoltage() {
 	return DistSensor->GetVoltage();
+}
+
+void UltrasonicSensor::SendSD() {
+	SmartDashboard::PutNumber("Ultrasonic Distance", GetDistance());
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

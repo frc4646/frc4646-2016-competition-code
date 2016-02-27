@@ -3,7 +3,7 @@
 #include "SmartDashboard/SmartDashboard.h"
 #include "LiveWindow/LiveWindow.h"
 
-LauncherPIDSubsystem::LauncherPIDSubsystem(std::string side, int motorPin, int encoderPin) :
+LauncherPIDSubsystem::LauncherPIDSubsystem(std::string side, MotorPin motorPin, DIOPin encoderPin) :
 		PIDSubsystem(side + "LauncherPIDSubsystem", 4.5, 0.167, .0),
 		pidMotor(motorPin),
 		pidEncoder(encoderPin),
@@ -28,7 +28,7 @@ double LauncherPIDSubsystem::ReturnPIDInput()
 	// e.g. a sensor, like a potentiometer:
 	// yourPot->SetAverageVoltage() / kYourMaxVoltage;
 	double speed = (1.0/(pidEncoder.GetPeriod()))*60.0;
-	SmartDashboard::PutNumber(GetName() + "RPMs", speed);
+//	SmartDashboard::PutNumber(GetName() + "RPMs", speed);
 	return (speed)/5000;
 }
 
@@ -61,4 +61,9 @@ void LauncherPIDSubsystem::Manual()
 void LauncherPIDSubsystem::SetManual(double power)
 {
 	pidMotor.Set(power);
+}
+
+void LauncherPIDSubsystem::SendSD() {
+	SmartDashboard::PutNumber(GetName() + "speed", ReturnPIDInput());
+	SmartDashboard::PutNumber(GetName() + "power", pidMotor.Get());
 }

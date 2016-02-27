@@ -1,11 +1,14 @@
 #include "ReverseIntakeCommand.h"
 #include "Subsystems/IntakeRoller.h"
+#include "Subsystems/LauncherPIDSubsystem.h"
 
 ReverseIntakeCommand::ReverseIntakeCommand()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(intakeroller);
+	Requires(leftlauncherpid);
+	Requires(rightlauncherpid);
 }
 
 // Called just before this Command runs the first time
@@ -18,6 +21,7 @@ void ReverseIntakeCommand::Initialize()
 void ReverseIntakeCommand::Execute()
 {
 	intakeroller->SetSpeed(-0.8);
+
 }
 
 // Make this return true when this Command no longer needs to run execute()

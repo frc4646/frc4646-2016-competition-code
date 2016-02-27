@@ -33,7 +33,7 @@ void SpinUp::Execute()
 bool SpinUp::IsFinished()
 {
 //	return !leftlauncherpid->OnTarget();
-	return !(leftlauncherpid->OnTarget() && rightlauncherpid->OnTarget());
+	return (leftlauncherpid->OnTarget() && rightlauncherpid->OnTarget());
 }
 
 // Called once after isFinished returns true

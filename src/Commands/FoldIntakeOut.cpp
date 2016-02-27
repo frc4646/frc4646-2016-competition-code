@@ -16,13 +16,13 @@ void FoldIntakeOut::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void FoldIntakeOut::Execute()
 {
-	intakearms->SetSpeed(0.8);
+	intakearms->Lower();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool FoldIntakeOut::IsFinished()
 {
-	return intakearms->GetDownValue();
+	return intakearms->IsFullyOut();
 }
 
 // Called once after isFinished returns true

@@ -3,16 +3,20 @@
 #include "../Commands/TankDrive.h"
 #include "../OI.h"
 
-DropDrive::DropDrive() :
+DropDrive::DropDrive(MotorPin leftPort, MotorPin rightPort, AnalogPin gyroPort) :
 		Subsystem("DropDrive"),
-		leftMotors(0),
-		rightMotors(1),
+		leftMotors(leftPort),
+		rightMotors(rightPort),
 		DriveTrain(leftMotors, rightMotors),
-		gyro(1)
+		gyro(gyroPort)
 {
 	gyro.Reset();
 	leftMotors.SetInverted(false);
 	rightMotors.SetInverted(false);
+	LiveWindow::GetInstance()->AddActuator("DriveTrain", "LeftMotor", leftMotors);
+	LiveWindow::GetInstance()->AddActuator("DriveTrain", "RightMotor", rightMotors);
+	LiveWindow::GetInstance()->AddSensor("DriveTrain", "Gyro", gyro);
+
 }
 
 void DropDrive::InitDefaultCommand()
@@ -48,5 +52,10 @@ void DropDrive::ResetGyro()
 	gyro.Reset();
 }
 
+void DropDrive::SendSD() {
+	SmartDashboard::PutNumber("Left Motors", leftMotors.Get());
+	SmartDashboard::PutNumber("Right Motors", rightMotors.Get());
+	SmartDashboard::PutNumber("Gyro heading", gyro.GetAngle());
+}
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

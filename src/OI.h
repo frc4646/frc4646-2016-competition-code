@@ -10,6 +10,7 @@ public:
 	Joystick& GetLeftStick();
 	Joystick& GetRightStick();
 	Joystick& GetMechanismStick();
+	double GetIntakeSpeed();
 private:
 	Joystick left;
 	Joystick right;
@@ -24,6 +25,7 @@ private:
 	JoystickButton foldintakein;
 	JoystickButton emergencyfire;
 	JoystickButton launchhigh;
+	JoystickButton emergencyraise;
 	JoystickButton launchlow;
 //	JoystickButton fireState;
 //	JoystickButton alignState;

@@ -17,7 +17,7 @@ void LEDSystem::InitDefaultCommand()
 
 void LEDSystem::SendLEDState(LEDstate state) {
 
-	unsigned char charHeight = state;
-	i2c.Transaction(&charHeight, 1, NULL,0);
+	unsigned char charState = state;
+	i2c.Transaction(&charState, 1, NULL,0);
 
 }

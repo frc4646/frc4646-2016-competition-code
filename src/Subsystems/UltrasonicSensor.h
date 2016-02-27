@@ -3,6 +3,7 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
+#include "PinEnums.h"
 
 class UltrasonicSensor: public Subsystem
 {
@@ -11,10 +12,11 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
-	UltrasonicSensor();
+	UltrasonicSensor(AnalogPin port);
 	void InitDefaultCommand();
 	double GetDistance();
 	double GetVoltage();
+	void SendSD();
 };
 
 #endif
