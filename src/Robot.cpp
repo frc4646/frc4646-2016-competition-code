@@ -32,11 +32,11 @@ private:
 		dist = SmartDashboard::GetNumber("Autonomous distance", 72);
 		power = SmartDashboard::GetNumber("Autonomous power", -0.2);
 		lw = LiveWindow::GetInstance();
-//		chooser = new SendableChooser();
-//		chooser->AddDefault("Do Nothing", new DriveForTime(0,0));
-//		chooser->AddObject("Firing Auto", new FiringAuto());
-//		chooser->AddObject("Crossing Auto", new CrossDefenseAuto());
-//		chooser->AddObject("Spy Bot Auto", new SpyAuto());
+		chooser = new SendableChooser();
+		chooser->AddDefault("Do Nothing", new DriveForTime(0,0));
+		chooser->AddObject("Firing Auto", new FiringAuto());
+		chooser->AddObject("Crossing Auto", new CrossDefenseAuto());
+		chooser->AddObject("Spy Bot Auto", new SpyAuto());
 		disable = new SendI2C(LEDSystem::LEDstate::disabled);
 		disable->Initialize();
 
@@ -51,10 +51,10 @@ private:
 
 	void AutonomousInit()
 	{
-//		autonomous = new SendI2C(LEDSystem::LEDstate::autonomous);
-//		autonomous->Initialize();
-//		autonomousCommand = (Command*) chooser->GetSelected();
-		autonomousCommand = (new FiringAuto());
+		autonomous = new SendI2C(LEDSystem::LEDstate::autonomous);
+		autonomous->Initialize();
+		autonomousCommand = (Command*) chooser->GetSelected();
+//		autonomousCommand = (new FiringAuto());
 				if (autonomousCommand != NULL)
 					autonomousCommand->Start();
 	}
