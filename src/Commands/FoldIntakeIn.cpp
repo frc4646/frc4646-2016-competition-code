@@ -23,6 +23,7 @@ void FoldIntakeIn::Execute()
 bool FoldIntakeIn::IsFinished()
 {
 	return intakearms->GetUpValue();
+//	return false;
 }
 
 // Called once after isFinished returns true

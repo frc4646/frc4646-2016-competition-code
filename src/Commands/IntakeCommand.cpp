@@ -21,10 +21,10 @@ void IntakeCommand::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void IntakeCommand::Execute()
 {
-	intakeroller->SetSpeed(oi->GetIntakeSpeed());
-	leftlauncherpid->SetManual(-.3);
+	intakeroller->SetSpeed(.80);
+	leftlauncherpid->SetManual(-.55);
 //	leftlauncherpid->Enable();
-	rightlauncherpid->SetManual(-.3);
+	rightlauncherpid->SetManual(-.55);
 //	rightlauncherpid->Enable();
 }
 

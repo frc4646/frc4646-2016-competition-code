@@ -14,6 +14,7 @@ LauncherPIDSubsystem::LauncherPIDSubsystem(std::string side, MotorPin motorPin, 
 	LiveWindow::GetInstance()->AddSensor(side + "LauncherPID2", side + "Encoder", pidEncoder);
 //	SmartDashboard::PutData(side+"LauncherPidController", GetPIDController().get());
 	GetPIDController()->SetOutputRange(0,1);
+	SetAbsoluteTolerance(.05);
 	SetPIDSourceType(PIDSourceType::kDisplacement);
 	pidEncoder.SetSamplesToAverage(1);
 	// Use these to get going:
@@ -66,4 +67,9 @@ void LauncherPIDSubsystem::SetManual(double power)
 void LauncherPIDSubsystem::SendSD() {
 	SmartDashboard::PutNumber(GetName() + "speed", ReturnPIDInput());
 	SmartDashboard::PutNumber(GetName() + "power", pidMotor.Get());
+	Command* comm = GetCurrentCommand();
+	if(comm)
+	{
+		SmartDashboard::PutString(GetName() + "command" , comm->GetName());
+	}
 }

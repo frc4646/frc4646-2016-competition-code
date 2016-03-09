@@ -11,10 +11,8 @@ EmergencySpin::EmergencySpin()
 // Called just before this Command runs the first time
 void EmergencySpin::Initialize()
 {
-	//pidtest->ClearError();
 	leftlauncherpid->Manual();
 	rightlauncherpid->Manual();
-
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -43,6 +41,5 @@ void EmergencySpin::End()
 // subsystems is scheduled to run
 void EmergencySpin::Interrupted()
 {
-	leftlauncherpid->SetManual(0);
-	rightlauncherpid->SetManual(0);
+	End();
 }

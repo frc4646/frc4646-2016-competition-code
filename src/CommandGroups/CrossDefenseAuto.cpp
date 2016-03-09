@@ -1,6 +1,6 @@
 #include "CrossDefenseAuto.h"
-#include "DriveForTime.h"
-#include "DriveUntilClose.h"
+#include "Commands/DriveForTime.h"
+#include "Commands/DriveUntilClose.h"
 
 CrossDefenseAuto::CrossDefenseAuto()
 {

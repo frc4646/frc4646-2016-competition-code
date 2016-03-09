@@ -21,7 +21,7 @@ void IntakeRoller::SetSpeed(double power)
 }
 
 void IntakeRoller::SendSD() {
-	SmartDashboard::PutNumber("Roller speed", roller.Get());
+	SmartDashboard::PutNumber("RollerSpeed", roller.Get());
 }
 
 // Put methods for controlling this subsystem

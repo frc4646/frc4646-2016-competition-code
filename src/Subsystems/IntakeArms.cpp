@@ -38,28 +38,22 @@ void IntakeArms::SetSpeed(double power)
 }
 
 void IntakeArms::Raise() {
-	SmartDashboard::PutNumber("LeftArmEncoder", LeftEncoder.Get());
-	SmartDashboard::PutNumber("RightArmEncoder", RightEncoder.Get());
-	SmartDashboard::PutNumber("ArmPower", arms.Get());
 
-	if(LimitUp->Get())
-	{
-		LeftEncoder.Reset();
-		RightEncoder.Reset();
-	}
-	if(!MotorsUnbalanced()){
-		arms.Set((-RightEncoder.Get())/MAX_ENCODER_COUNT);
-	}
-	else{
-		arms.Set(0);
-	}
+	arms.Set(-.75);
+	//	if(LimitUp->Get())
+//	{
+//		LeftEncoder.Reset();
+//		RightEncoder.Reset();
+//	}
+//	if(!MotorsUnbalanced()){
+//		arms.Set((-RightEncoder.Get())/MAX_ENCODER_COUNT);
+//	}
+//	else{
+//		arms.Set(0);
+//	}
 }
 
 void IntakeArms::ForceRaise() {
-	SmartDashboard::PutNumber("LeftArmEncoder", LeftEncoder.Get());
-	SmartDashboard::PutNumber("RightArmEncoder", RightEncoder.Get());
-	SmartDashboard::PutNumber("ArmPower", arms.Get());
-
 	if(LimitUp->Get())
 	{
 		LeftEncoder.Reset();
@@ -71,15 +65,13 @@ void IntakeArms::ForceRaise() {
 }
 
 void IntakeArms::Lower() {
-	SmartDashboard::PutNumber("LeftArmEncoder", LeftEncoder.Get());
-	SmartDashboard::PutNumber("RightArmEncoder", RightEncoder.Get());
-
-	if(!MotorsUnbalanced()){
-		arms.Set((MAX_ENCODER_COUNT-RightEncoder.Get())/MAX_ENCODER_COUNT);
-	}
-	else{
-		arms.Set(0);
-	}
+	arms.Set(.75);
+	//	if(!MotorsUnbalanced()){
+//		arms.Set((MAX_ENCODER_COUNT-RightEncoder.Get())/MAX_ENCODER_COUNT);
+//	}
+//	else{
+//		arms.Set(0);
+//	}
 }
 
 bool IntakeArms::IsFullyOut() {
@@ -87,9 +79,9 @@ bool IntakeArms::IsFullyOut() {
 }
 
 void IntakeArms::SendSD() {
-	SmartDashboard::PutNumber("Left Arm Encoder", LeftEncoder.Get());
-	SmartDashboard::PutNumber("Right Arm Encoder", RightEncoder.Get());
-	SmartDashboard::PutBoolean("Arm limit switch", LimitUp.get());
+	SmartDashboard::PutNumber("LeftArmEncoder", LeftEncoder.Get());
+	SmartDashboard::PutNumber("RightArmEncoder", RightEncoder.Get());
+	SmartDashboard::PutBoolean("ArmLimitswitch", LimitUp.get());
 }
 
 bool IntakeArms::MotorsUnbalanced() {

@@ -4,7 +4,8 @@
 
 DriveUntilClose::DriveUntilClose(double power, double distance):
 robotPower(power),
-sensorDistance(distance)
+sensorDistance(distance),
+confidence(0)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -24,12 +25,20 @@ void DriveUntilClose::Execute()
 	gyroCurve = dropdrive->GetHeading()/90.0;
 	dropdrive->SetDrive(robotPower, -gyroCurve);
 	SmartDashboard::PutNumber("Gyro Heading", dropdrive->GetHeading());
+	if (ultrasonicsensor->GetDistance()<sensorDistance)
+	{
+		confidence++;
+	}
+	else
+	{
+		confidence = 0;
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveUntilClose::IsFinished()
 {
-	return ultrasonicsensor->GetDistance()<sensorDistance;
+	return confidence > 3;
 }
 
 // Called once after isFinished returns true

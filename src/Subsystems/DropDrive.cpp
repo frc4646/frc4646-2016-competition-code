@@ -50,12 +50,18 @@ double DropDrive::GetHeading()
 void DropDrive::ResetGyro()
 {
 	gyro.Reset();
+	gyro.Calibrate();
+}
+
+void DropDrive::GyroCalibrate()
+{
+	gyro.Calibrate();
 }
 
 void DropDrive::SendSD() {
-	SmartDashboard::PutNumber("Left Motors", leftMotors.Get());
-	SmartDashboard::PutNumber("Right Motors", rightMotors.Get());
-	SmartDashboard::PutNumber("Gyro heading", gyro.GetAngle());
+	SmartDashboard::PutNumber("LeftMotors", leftMotors.Get());
+	SmartDashboard::PutNumber("RightMotors", rightMotors.Get());
+	SmartDashboard::PutNumber("Gyroheading", gyro.GetAngle());
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

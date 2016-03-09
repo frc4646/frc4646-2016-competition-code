@@ -27,7 +27,11 @@ private:
 	JoystickButton launchhigh;
 	JoystickButton emergencyraise;
 	JoystickButton launchlow;
-//	JoystickButton fireState;
+	JoystickButton assistTurn;
+	JoystickButton assistDistance;
+	JoystickButton driverFire;
+	JoystickButton driveStraight;
+	//	JoystickButton fireState;
 //	JoystickButton alignState;
 //	JoystickButton outrangeState;
 };

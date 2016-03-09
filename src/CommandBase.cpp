@@ -56,7 +56,7 @@ void CommandBase::init()
 //	SmartDashboard::PutData(leftlauncherpid);
 //	SmartDashboard::PutData(rightlauncherpid);
 //	SmartDashboard::PutString("Hello world!", "testing testing 123");
-//	SmartDashboard::PutNumber("Distance", ultrasonicsensor->GetDistance());
+	SmartDashboard::PutNumber("Gyroval", dropdrive->GetHeading());
 //	SmartDashboard::PutNumber("Voltage", ultrasonicsensor->GetVoltage());
 //	SmartDashboard::PutNumber("LeftPID", leftlauncherpid->ReturnPIDInput());
 }

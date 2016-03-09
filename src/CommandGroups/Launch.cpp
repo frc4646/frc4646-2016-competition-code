@@ -1,9 +1,9 @@
-#include <Commands/Launch.h>
-#include "FoldIntakeIn.h"
-#include "SpinUp.h"
-#include "ReverseIntakeCommand.h"
-#include "StopSpeed.h"
-#include "PrepLaunch.h"
+#include "Launch.h"
+#include "Commands/FoldIntakeIn.h"
+#include "Commands/SpinUp.h"
+#include "Commands/ReverseIntakeCommand.h"
+#include "Commands/StopSpeed.h"
+#include "CommandGroups/PrepLaunch.h"
 
 Launch::Launch(double speed)
 {

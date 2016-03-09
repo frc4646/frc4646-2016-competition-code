@@ -26,7 +26,7 @@ double UltrasonicSensor::GetVoltage() {
 }
 
 void UltrasonicSensor::SendSD() {
-	SmartDashboard::PutNumber("Ultrasonic Distance", GetDistance());
+	SmartDashboard::PutNumber("UltrasonicDistance", GetDistance());
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

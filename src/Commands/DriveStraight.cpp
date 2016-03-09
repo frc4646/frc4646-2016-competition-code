@@ -1,9 +1,7 @@
-#include "DriveForTime.h"
+#include "DriveStraight.h"
 #include "Subsystems/DropDrive.h"
-
-DriveForTime::DriveForTime(double power, double curve):
-drivePower(power),
-driveCurve(curve)
+#include "OI.h"
+DriveStraight::DriveStraight()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -11,34 +9,34 @@ driveCurve(curve)
 }
 
 // Called just before this Command runs the first time
-void DriveForTime::Initialize()
+void DriveStraight::Initialize()
 {
 	dropdrive->ResetGyro();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void DriveForTime::Execute()
+void DriveStraight::Execute()
 {
-	gyroCurve = dropdrive->GetHeading()/90.0;
-	dropdrive->SetDrive(drivePower, driveCurve - gyroCurve);
-	SmartDashboard::PutNumber("Gyro Heading", dropdrive->GetHeading());
+	double gyroCurve = dropdrive->GetHeading()/90.0;
+	double robotPower = oi->GetLeftStick().GetRawAxis(1);
+	dropdrive->SetDrive(robotPower, -gyroCurve);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool DriveForTime::IsFinished()
+bool DriveStraight::IsFinished()
 {
 	return false;
 }
 
 // Called once after isFinished returns true
-void DriveForTime::End()
+void DriveStraight::End()
 {
 	dropdrive->SetDrive(0,0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void DriveForTime::Interrupted()
+void DriveStraight::Interrupted()
 {
 	End();
 }

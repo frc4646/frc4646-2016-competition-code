@@ -1,15 +1,15 @@
 #include "FiringAuto.h"
-#include "DriveForTime.h"
-#include "DriveUntilClose.h"
-#include "RobotGoalAngle.h"
-#include "RobotGoalDistance.h"
-#include "TurnForAngle.h"
-#include "Launch.h"
-#include "EmergencySpin.h"
-#include "SpinUp.h"
-#include "FoldIntakeIn.h"
-#include "FoldIntakeOut.h"
-#include "ResetGyro.h"
+#include "Commands/DriveForTime.h"
+#include "Commands/DriveUntilClose.h"
+#include "Commands/RobotGoalAngle.h"
+#include "Commands/RobotGoalDistance.h"
+#include "Commands/TurnForAngle.h"
+#include "CommandGroups/Launch.h"
+#include "Commands/EmergencySpin.h"
+#include "Commands/SpinUp.h"
+#include "Commands/FoldIntakeIn.h"
+#include "Commands/FoldIntakeOut.h"
+#include "Commands/ResetGyro.h"
 
 FiringAuto::FiringAuto()
 {
@@ -29,12 +29,12 @@ FiringAuto::FiringAuto()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential(new ResetGyro());
+	AddSequential(new ResetGyro(), 5);
 	AddSequential(new FoldIntakeOut(), 1.5);
 	AddSequential(new TurnForAngle(.3, 0));
-	AddSequential(new DriveForTime(.3,0),4.5);
+	AddSequential(new DriveForTime(.45,0),5.8);
 	AddSequential(new FoldIntakeIn(), 1.5);
-	AddSequential(new DriveUntilClose(.4,84));
+	AddSequential(new DriveUntilClose(.4,72));
 	AddSequential(new TurnForAngle(.3, 60));
 	AddSequential(new RobotGoalAngle(),2);
 	AddSequential(new RobotGoalDistance(),2);

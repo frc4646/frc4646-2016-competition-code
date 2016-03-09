@@ -19,16 +19,16 @@ void RobotGoalAngle::Initialize()
 }
 
 // Called repeatedly when this Command is scheduled to run
-void RobotGoalAngle::Execute()
+void RobotGoalAngle::Execute()//Optimal middle x ~307 with first shooter modification
 {
 	turning = visioncalculation->RobotToGoalAngle()/320.0;
-	if (turning > 0.1)
+	if (turning > 0.01)
 	{
-		robotTurn = 0.12;
+		robotTurn = 0.2;
 	}
-	else if (turning < -0.1)
+	else if (turning < -0.05)
 	{
-		robotTurn = -0.12;
+		robotTurn = -0.2;
 	}
 	else
 	{
@@ -37,6 +37,7 @@ void RobotGoalAngle::Execute()
 
 	dropdrive->SetDrive(robotTurn, 1);
 	SmartDashboard::PutNumber("Goal X Position", robotTurn);
+	SmartDashboard::PutBoolean("LinedUp",confidence > 3);
 }
 
 // Make this return true when this Command no longer needs to run execute()

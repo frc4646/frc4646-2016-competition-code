@@ -31,7 +31,7 @@ float VisionCalculation::GetGoalDistance()
 //	double goalHeightPixels = networkTable->GetNumber("height", 100);
 
 	//Insert distance equation here using the above numbers for calculation
-	distVals = networkTable->GetNumberArray("height", llvm::ArrayRef<double>());
+	distVals = networkTable->GetNumberArray("centerY", llvm::ArrayRef<double>());
 	if (!distVals.empty())
 	{
 		goalHeight = (float)distVals[0];
@@ -46,6 +46,7 @@ float VisionCalculation::GetGoalDistance()
 
 float VisionCalculation::RobotToGoalAngle()
 {
+	const int desiredPosition = 407;
 	xVals = networkTable->GetNumberArray("centerX", llvm::ArrayRef<double>());
 	if (!xVals.empty())
 	{
@@ -53,9 +54,9 @@ float VisionCalculation::RobotToGoalAngle()
 	}
 	else
 	{
-		goalXPos = 320;
+		goalXPos = desiredPosition;
 	}
-	return goalXPos - 320;
+	return goalXPos - desiredPosition;
 }
 
 float VisionCalculation::GoalToRobotAngle()
@@ -66,6 +67,6 @@ float VisionCalculation::GoalToRobotAngle()
 }
 
 void VisionCalculation::SendSD() {
-	SmartDashboard::PutNumber("Robot to goal distance", GetGoalDistance());
-	SmartDashboard::PutNumber("Robot to goal angle", RobotToGoalAngle());
+	SmartDashboard::PutNumber("RobotToGoalDistance", GetGoalDistance());
+	SmartDashboard::PutNumber("RobotToGoalAngle", RobotToGoalAngle());
 }

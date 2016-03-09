@@ -1,12 +1,12 @@
 #include "SpinUp.h"
 #include "Subsystems/LauncherPIDSubsystem.h"
 SpinUp::SpinUp(double speed)
+:launchSpeed(speed)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(leftlauncherpid);
 	Requires(rightlauncherpid);
-	launchSpeed = speed;
 }
 
 // Called just before this Command runs the first time
@@ -32,7 +32,9 @@ void SpinUp::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool SpinUp::IsFinished()
 {
-//	return !leftlauncherpid->OnTarget();
+	SmartDashboard::PutBoolean("LeftOnTarget", leftlauncherpid->OnTarget());
+	SmartDashboard::PutBoolean("RightOnTarget", rightlauncherpid->OnTarget());
+	//	return !leftlauncherpid->OnTarget();
 	return (leftlauncherpid->OnTarget() && rightlauncherpid->OnTarget());
 }
 

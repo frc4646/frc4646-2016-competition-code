@@ -4,14 +4,15 @@
 #include "CommandBase.h"
 #include "Commands/DriveUntilClose.h"
 #include "Commands/DriveForTime.h"
-#include "Commands/FiringAuto.h"
-#include "Commands/CrossDefenseAuto.h"
-#include "Commands/SpyAuto.h"
+#include "CommandGroups/FiringAuto.h"
+#include "CommandGroups/CrossDefenseAuto.h"
+#include "CommandGroups/SpyAuto.h"
 #include "Commands/SendI2C.h"
 #include "Commands/RobotGoalDistance.h"
 #include "Commands/RobotGoalAngle.h"
-#include "Commands/FiringAuto.h"
+#include "CommandGroups/FiringAuto.h"
 #include "Subsystems/LEDSystem.h"
+#include "Subsystems/DropDrive.h"
 
 class Robot: public IterativeRobot
 {

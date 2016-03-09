@@ -17,6 +17,7 @@ private:
 	double robotPower;
 	double sensorDistance;
 	double gyroCurve;
+	int confidence;
 };
 
 #endif

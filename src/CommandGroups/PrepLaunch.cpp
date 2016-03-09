@@ -1,11 +1,8 @@
-#include "SpyAuto.h"
-#include "DriveForTime.h"
-#include "DriveUntilFar.h"
-#include "RobotGoalAngle.h"
-#include "RobotGoalDistance.h"
-#include "Launch.h"
+#include "PrepLaunch.h"
+#include "Commands/FoldIntakeIn.h"
+#include "Commands/SpinUp.h"
 
-SpyAuto::SpyAuto()
+PrepLaunch::PrepLaunch(double speed)
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -23,8 +20,6 @@ SpyAuto::SpyAuto()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential(new DriveUntilFar(-.5,72));
-	AddSequential(new RobotGoalAngle());
-	AddSequential(new RobotGoalDistance());
-	AddSequential(new Launch(1));
+	AddParallel(new FoldIntakeIn());
+	AddParallel(new SpinUp(speed));
 }

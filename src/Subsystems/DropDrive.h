@@ -26,6 +26,7 @@ public:
 	double GetHeading();
 	void ResetGyro();
 	void SendSD();
+	void GyroCalibrate();
 };
 
 #endif
