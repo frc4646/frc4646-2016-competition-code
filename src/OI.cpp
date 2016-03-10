@@ -54,7 +54,7 @@ driveStraight(&left, 1)
 	launchlow.WhenPressed(new Launch(0.4));
 	assistTurn.WhileHeld(new RobotGoalAngle());
 	assistDistance.WhileHeld(new RobotGoalDistance());
-	driverFire.WhenPressed(new Launch(1));
+	driverFire.WhenPressed(new Launch(.9));
 	driveStraight.WhileHeld(new DriveStraight());
 //	fireState.WhenPressed(new SendI2C(LEDSystem::LEDstate::autonomous));
 //	alignState.WhenPressed(new SendI2C(LEDSystem::LEDstate::teleop));

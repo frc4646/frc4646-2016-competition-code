@@ -39,8 +39,7 @@ private:
 		chooser->AddObject("Spy Bot Auto", new SpyAuto());
 		disable = new SendI2C(LEDSystem::LEDstate::disabled);
 		disable->Initialize();
-
-
+		SmartDashboard::PutData("Autonomous mode", chooser);
 	}
 	
 	void DisabledPeriodic()
