@@ -7,7 +7,7 @@
 class CrossDefenseAuto: public CommandGroup
 {
 public:
-	CrossDefenseAuto();
+	CrossDefenseAuto(double angle);
 };
 
 #endif

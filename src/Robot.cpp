@@ -34,8 +34,8 @@ private:
 		lw = LiveWindow::GetInstance();
 		chooser = new SendableChooser();
 		chooser->AddDefault("Do Nothing", new DriveForTime(0,0));
-		chooser->AddObject("Firing Auto", new FiringAuto());
-		chooser->AddObject("Crossing Auto", new CrossDefenseAuto());
+		chooser->AddObject("Low Bar Auto", new FiringAuto());
+		chooser->AddObject("Defense 5 Auto", new CrossDefenseAuto(-30));
 		chooser->AddObject("Spy Bot Auto", new SpyAuto());
 		disable = new SendI2C(LEDSystem::LEDstate::disabled);
 		disable->Initialize();

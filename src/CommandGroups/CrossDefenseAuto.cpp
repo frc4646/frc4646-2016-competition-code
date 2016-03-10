@@ -11,7 +11,7 @@
 #include "Commands/FoldIntakeOut.h"
 #include "Commands/ResetGyro.h"
 
-CrossDefenseAuto::CrossDefenseAuto()
+CrossDefenseAuto::CrossDefenseAuto(double angle)
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -31,7 +31,7 @@ CrossDefenseAuto::CrossDefenseAuto()
 	// arm.
 	AddParallel(new DriveForTime(.8,0),3);
 	AddSequential(new DriveUntilClose(.5,72));
-//	AddSequential(new TurnForAngle(.3, 60));
+	AddSequential(new TurnForAngle(.3, angle));
 	AddSequential(new RobotGoalAngle(),2);
 	AddSequential(new RobotGoalDistance(),2);
 	AddSequential(new RobotGoalAngle(),2);
