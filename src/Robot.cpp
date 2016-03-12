@@ -40,6 +40,9 @@ private:
 		disable = new SendI2C(LEDSystem::LEDstate::disabled);
 		disable->Initialize();
 		SmartDashboard::PutData("Autonomous mode", chooser);
+		CameraServer::GetInstance()->SetQuality(50);
+		//the camera name (ex "cam0") can be found through the roborio web interface
+		CameraServer::GetInstance()->StartAutomaticCapture("cam1");
 	}
 	
 	void DisabledPeriodic()
@@ -52,8 +55,8 @@ private:
 	{
 		autonomous = new SendI2C(LEDSystem::LEDstate::autonomous);
 		autonomous->Initialize();
-		autonomousCommand = (Command*) chooser->GetSelected();
-//		autonomousCommand = (new FiringAuto());
+//		autonomousCommand = (Command*) chooser->GetSelected();
+		autonomousCommand = (new FiringAuto());
 				if (autonomousCommand != NULL)
 					autonomousCommand->Start();
 	}

@@ -50,7 +50,7 @@ double DropDrive::GetHeading()
 void DropDrive::ResetGyro()
 {
 	gyro.Reset();
-	gyro.Calibrate();
+//	gyro.Calibrate();
 }
 
 void DropDrive::GyroCalibrate()

@@ -31,10 +31,10 @@ void RobotGoalDistance::Execute()
 	heightPixels = visioncalculation->GetGoalDistance();
 	SmartDashboard::PutNumber("Target Height", visioncalculation->GetGoalDistance());//Possible height 54 w/ first shooter modification
 	if(heightPixels<LIMITLOW){
-		dropdrive->SetDrive(-.18,0);// + ((LIMITLOW - heightPixels)/250.0),0);
+		dropdrive->SetDrive(-.15,0);// + ((LIMITLOW - heightPixels)/250.0),0);
 	}
 	else if(heightPixels>LIMITHIGH){
-		dropdrive->SetDrive(.18,0);// + ((heightPixels - LIMITHIGH)/250.0),0);
+		dropdrive->SetDrive(.15,0);// + ((heightPixels - LIMITHIGH)/250.0),0);
 	}
 	else{
 		dropdrive->SetDrive(0,0);

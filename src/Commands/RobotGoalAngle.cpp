@@ -24,11 +24,11 @@ void RobotGoalAngle::Execute()//Optimal middle x ~307 with first shooter modific
 	turning = visioncalculation->RobotToGoalAngle()/320.0;
 	if (turning > 0.01)
 	{
-		robotTurn = 0.2;
+		robotTurn = 0.18;
 	}
 	else if (turning < -0.05)
 	{
-		robotTurn = -0.2;
+		robotTurn = -0.18;
 	}
 	else
 	{

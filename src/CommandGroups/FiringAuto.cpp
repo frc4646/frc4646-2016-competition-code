@@ -30,9 +30,9 @@ FiringAuto::FiringAuto()
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 	AddSequential(new ResetGyro(), 5);
-	AddSequential(new FoldIntakeOut(), 1.5);
-	AddSequential(new TurnForAngle(.3, 0));
-	AddSequential(new DriveForTime(.45,0),5.8);
+	AddSequential(new FoldIntakeOut(), 1);
+	AddSequential(new TurnForAngle(.3, 0), .5);
+	AddSequential(new DriveForTime(.45,0),4.5);
 	AddSequential(new FoldIntakeIn(), 1.5);
 	AddSequential(new DriveUntilClose(.4,72));
 	AddSequential(new TurnForAngle(.3, 60));
