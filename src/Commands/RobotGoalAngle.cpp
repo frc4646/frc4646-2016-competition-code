@@ -61,7 +61,7 @@ void RobotGoalAngle::Interrupted()
 }
 
 void RobotGoalAngle::isInRange() {
-	if (turning < 0.15 && turning > -0.15)
+	if (turning < 0.12 && turning > -0.12)
 	{
 		confidence++;
 	}

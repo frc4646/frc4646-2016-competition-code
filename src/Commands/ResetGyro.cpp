@@ -11,7 +11,7 @@ ResetGyro::ResetGyro()
 // Called just before this Command runs the first time
 void ResetGyro::Initialize()
 {
-	dropdrive->GyroCalibrate();
+	dropdrive->ResetGyro();
 }
 
 // Called repeatedly when this Command is scheduled to run

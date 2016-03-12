@@ -29,12 +29,15 @@ CrossDefenseAuto::CrossDefenseAuto(double angle)
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddParallel(new DriveForTime(.8,0),3);
-	AddSequential(new DriveUntilClose(.5,72));
+	AddSequential(new ResetGyro());
+	AddSequential(new DriveForTime(.8,0),2);
+	AddSequential(new TurnForAngle(.4, 0), 2);
+	AddSequential(new DriveForTime(.4, 0), .5);
+	AddSequential(new DriveUntilClose(.4,84));
 	AddSequential(new TurnForAngle(.3, angle));
-	AddSequential(new RobotGoalAngle(),2);
-	AddSequential(new RobotGoalDistance(),2);
-	AddSequential(new RobotGoalAngle(),2);
+	AddSequential(new RobotGoalAngle(),3);
+	AddSequential(new RobotGoalDistance(),3);
+	AddSequential(new RobotGoalAngle(),3);
 //	AddSequential(new SpinUp(.8), 2);
 	AddSequential(new Launch(1));
 }

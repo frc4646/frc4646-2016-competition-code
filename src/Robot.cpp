@@ -35,14 +35,15 @@ private:
 		chooser = new SendableChooser();
 		chooser->AddDefault("Do Nothing", new DriveForTime(0,0));
 		chooser->AddObject("Low Bar Auto", new FiringAuto());
-		chooser->AddObject("Defense 5 Auto", new CrossDefenseAuto(-30));
+		chooser->AddObject("Defense 2 Auto", new CrossDefenseAuto(45));
+		chooser->AddObject("Defense 3 Auto", new CrossDefenseAuto(0));
 		chooser->AddObject("Spy Bot Auto", new SpyAuto());
 		disable = new SendI2C(LEDSystem::LEDstate::disabled);
 		disable->Initialize();
 		SmartDashboard::PutData("Autonomous mode", chooser);
-		CameraServer::GetInstance()->SetQuality(50);
-		//the camera name (ex "cam0") can be found through the roborio web interface
-		CameraServer::GetInstance()->StartAutomaticCapture("cam1");
+//		CameraServer::GetInstance()->SetQuality(50);
+//		//the camera name (ex "cam0") can be found through the roborio web interface
+//		CameraServer::GetInstance()->StartAutomaticCapture("cam1");
 	}
 	
 	void DisabledPeriodic()
@@ -55,8 +56,8 @@ private:
 	{
 		autonomous = new SendI2C(LEDSystem::LEDstate::autonomous);
 		autonomous->Initialize();
-//		autonomousCommand = (Command*) chooser->GetSelected();
-		autonomousCommand = (new FiringAuto());
+		autonomousCommand = (Command*) chooser->GetSelected();
+//		autonomousCommand = (new FiringAuto());
 				if (autonomousCommand != NULL)
 					autonomousCommand->Start();
 	}

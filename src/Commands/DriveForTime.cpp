@@ -40,5 +40,5 @@ void DriveForTime::End()
 // subsystems is scheduled to run
 void DriveForTime::Interrupted()
 {
-//	End();
+	End();
 }

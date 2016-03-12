@@ -10,6 +10,8 @@
 #include "Commands/FoldIntakeIn.h"
 #include "Commands/FoldIntakeOut.h"
 #include "Commands/ResetGyro.h"
+#include "Commands/AutoRollerIn.h"
+#include "Commands/IntakeCommand.h"
 
 FiringAuto::FiringAuto()
 {
@@ -29,17 +31,19 @@ FiringAuto::FiringAuto()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential(new ResetGyro(), 5);
+	AddSequential(new ResetGyro());
 	AddSequential(new FoldIntakeOut(), 1);
 	AddSequential(new TurnForAngle(.3, 0), .5);
-	AddSequential(new DriveForTime(.45,0),4.5);
-	AddSequential(new FoldIntakeIn(), 1.5);
-	AddSequential(new DriveUntilClose(.4,72));
+	AddSequential(new DriveForTime(.45,0),3.75);
+	AddSequential(new AutoRollerIn(), 1.5);
+	AddSequential(new IntakeCommand(), .1);
+	AddSequential(new DriveUntilClose(.4,94));
 	AddSequential(new TurnForAngle(.3, 60));
+	AddSequential(new DriveForTime(.4, 0), 1.2);
 	AddSequential(new RobotGoalAngle(),2);
 	AddSequential(new RobotGoalDistance(),2);
 	AddSequential(new RobotGoalAngle(),2);
 //	AddSequential(new SpinUp(.8), 2);
-	AddSequential(new Launch(1));
+	AddSequential(new Launch(.9));
 
 }

@@ -18,8 +18,14 @@ void DriveStraight::Initialize()
 void DriveStraight::Execute()
 {
 	double gyroCurve = dropdrive->GetHeading()/90.0;
-	double robotPower = oi->GetLeftStick().GetRawAxis(1);
-	dropdrive->SetDrive(robotPower, -gyroCurve);
+	double robotPower = -oi->GetLeftStick().GetRawAxis(1);
+	if (robotPower > 0) {
+		dropdrive->SetDrive(robotPower, -gyroCurve);
+	}
+	else {
+		dropdrive->SetDrive(robotPower, gyroCurve);
+	}
+
 }
 
 // Make this return true when this Command no longer needs to run execute()

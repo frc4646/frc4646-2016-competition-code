@@ -10,9 +10,10 @@ DropDrive::DropDrive(MotorPin leftPort, MotorPin rightPort, AnalogPin gyroPort) 
 		DriveTrain(leftMotors, rightMotors),
 		gyro(gyroPort)
 {
-	gyro.Reset();
+//	gyro.Reset();
 	leftMotors.SetInverted(false);
 	rightMotors.SetInverted(false);
+	GyroCalibrate();
 	LiveWindow::GetInstance()->AddActuator("DriveTrain", "LeftMotor", leftMotors);
 	LiveWindow::GetInstance()->AddActuator("DriveTrain", "RightMotor", rightMotors);
 	LiveWindow::GetInstance()->AddSensor("DriveTrain", "Gyro", gyro);
