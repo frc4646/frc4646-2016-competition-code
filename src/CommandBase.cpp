@@ -10,6 +10,7 @@
 #include "Commands/Scheduler.h"
 #include "PinEnums.h"
 #include "Subsystems/SendSmartDash.h"
+#include "Subsystems/FiringServo.h"
 
 // Initialize a single static instance of all of your subsystems to NULL
 OI* CommandBase::oi = NULL;
@@ -22,6 +23,7 @@ IntakeArms* CommandBase::intakearms = NULL;
 VisionCalculation* CommandBase::visioncalculation = NULL;
 LEDSystem* CommandBase::ledsystem = NULL;
 SendSmartDash* CommandBase::sendsmartdash = NULL;
+FiringServo* CommandBase::firingservo = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -49,6 +51,7 @@ void CommandBase::init()
 	visioncalculation = new VisionCalculation();
 	ledsystem = new LEDSystem();
 	sendsmartdash = new SendSmartDash();
+	firingservo = new FiringServo(M4);
 
 
 	SmartDashboard::PutData(dropdrive);
