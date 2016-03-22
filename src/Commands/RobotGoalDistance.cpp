@@ -18,11 +18,10 @@ void RobotGoalDistance::Initialize()
 }
 
 //const int DESIRED_HEIGHT = 295;
-const int DESIRED_HEIGHT=457;
-//const int DEADBAND = 10;
-const int DEADBAND = 10;
-const int LIMITLOW = DESIRED_HEIGHT - DEADBAND;
-const int LIMITHIGH = DESIRED_HEIGHT + DEADBAND;
+const int DESIRED_Y_POS=286;
+const int DEADBAND = 2;
+const int LIMITLOW = DESIRED_Y_POS - DEADBAND;
+const int LIMITHIGH = DESIRED_Y_POS + DEADBAND;
 
 
 // Called repeatedly when this Command is scheduled to run

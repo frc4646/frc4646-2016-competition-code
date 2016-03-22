@@ -13,6 +13,7 @@
 #include "CommandGroups/FiringAuto.h"
 #include "Subsystems/LEDSystem.h"
 #include "Subsystems/DropDrive.h"
+#include "CommandGroups/JustCrossDefense.h"
 
 class Robot: public IterativeRobot
 {
@@ -38,6 +39,7 @@ private:
 		chooser->AddObject("Defense 2 Auto", new CrossDefenseAuto(45));
 		chooser->AddObject("Defense 3 Auto", new CrossDefenseAuto(0));
 		chooser->AddObject("Spy Bot Auto", new SpyAuto());
+		chooser->AddObject("Cross Defense", new JustCrossDefense());
 		disable = new SendI2C(LEDSystem::LEDstate::disabled);
 		disable->Initialize();
 		SmartDashboard::PutData("Autonomous mode", chooser);

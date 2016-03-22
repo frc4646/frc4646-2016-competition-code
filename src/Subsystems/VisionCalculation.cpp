@@ -46,7 +46,7 @@ float VisionCalculation::GetGoalDistance()
 
 float VisionCalculation::RobotToGoalAngle()
 {
-	const int desiredPosition = 407;
+	const int desiredPosition = 383;
 	xVals = networkTable->GetNumberArray("centerX", llvm::ArrayRef<double>());
 	if (!xVals.empty())
 	{

@@ -75,7 +75,8 @@ void IntakeArms::Lower() {
 }
 
 bool IntakeArms::IsFullyOut() {
-	return RightEncoder.Get()>=MAX_ENCODER_COUNT;
+	return false;
+//	return RightEncoder.Get()>=MAX_ENCODER_COUNT;
 }
 
 void IntakeArms::SendSD() {

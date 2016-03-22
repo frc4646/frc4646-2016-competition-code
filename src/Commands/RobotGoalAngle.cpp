@@ -21,14 +21,17 @@ void RobotGoalAngle::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void RobotGoalAngle::Execute()//Optimal middle x ~307 with first shooter modification
 {
+//	const double turn_power = 0.18;
+
+	const double turn_power = 0.36;
 	turning = visioncalculation->RobotToGoalAngle()/320.0;
 	if (turning > 0.01)
 	{
-		robotTurn = 0.18;
+		robotTurn = turn_power;
 	}
 	else if (turning < -0.05)
 	{
-		robotTurn = -0.18;
+		robotTurn = -turn_power;
 	}
 	else
 	{
