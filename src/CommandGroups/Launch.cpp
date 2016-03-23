@@ -4,6 +4,8 @@
 #include "Commands/ReverseIntakeCommand.h"
 #include "Commands/StopSpeed.h"
 #include "CommandGroups/PrepLaunch.h"
+#include "Commands/ServoExtend.h"
+#include "Commands/ServoRetract.h"
 
 Launch::Launch(double speed)
 {
@@ -26,7 +28,9 @@ Launch::Launch(double speed)
 //	AddParallel(new FoldIntakeIn(), 1.5);
 //	AddSequential(new SpinUp(speed), 1.5);
 	AddSequential(new PrepLaunch(speed), 1.5);
-	AddSequential(new ReverseIntakeCommand(),1);
+	//AddSequential(new ReverseIntakeCommand(),1);
+	AddSequential(new ServoExtend(), .5);
 //	AddSequential(new WaitCommand(1));
 	AddSequential(new StopSpeed());
+	AddSequential(new ServoRetract());
 }
