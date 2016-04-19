@@ -1,7 +1,8 @@
-#include "ServoRetract.h"
+#include "ServoManual.h"
+#include "OI.h"
 #include "Subsystems/FiringServo.h"
 
-ServoRetract::ServoRetract()
+ServoManual::ServoManual()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -9,33 +10,34 @@ ServoRetract::ServoRetract()
 }
 
 // Called just before this Command runs the first time
-void ServoRetract::Initialize()
+void ServoManual::Initialize()
 {
-	firingservo->Set(1);
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ServoRetract::Execute()
+void ServoManual::Execute()
 {
-	firingservo->Set(1);
+	firingservo->Set(oi->GetLeftStick().GetRawAxis(2));
+	SmartDashboard::PutNumber("ServoCommand", oi->GetLeftStick().GetRawAxis(2));
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ServoRetract::IsFinished()
+bool ServoManual::IsFinished()
 {
 	return false;
 }
 
 // Called once after isFinished returns true
-void ServoRetract::End()
+void ServoManual::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ServoRetract::Interrupted()
+void ServoManual::Interrupted()
 {
 
 }

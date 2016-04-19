@@ -29,7 +29,8 @@ void IntakeArms::InitDefaultCommand()
 
 bool IntakeArms::GetUpValue()
 {
-	return LimitUp->Get();
+	//return LimitUp->Get();
+	return false;
 }
 
 void IntakeArms::SetSpeed(double power)

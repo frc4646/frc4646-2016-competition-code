@@ -15,6 +15,7 @@ public:
 	FiringServo(MotorPin servoPort);
 	void InitDefaultCommand();
 	void GoToAngle(double angle);
+	void Set(double value);
 };
 
 #endif

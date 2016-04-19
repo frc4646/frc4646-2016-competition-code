@@ -1,11 +1,8 @@
-#include "Launch.h"
-#include "Commands/FoldIntakeIn.h"
-#include "Commands/SpinUp.h"
-#include "Commands/ReverseIntakeCommand.h"
-#include "Commands/StopSpeed.h"
-#include "CommandGroups/PrepLaunch.h"
-#include "Commands/ServoExtend.h"
-#include "Commands/ServoRetract.h"
+#include <CommandGroups/Launch.h>
+#include <Commands/ServoExtend.h>
+#include <Commands/ServoRetract.h>
+#include <Commands/SpinUp.h>
+#include <Commands/StopSpeed.h>
 
 Launch::Launch(double speed)
 {
@@ -26,11 +23,11 @@ Launch::Launch(double speed)
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 //	AddParallel(new FoldIntakeIn(), 1.5);
-//	AddSequential(new SpinUp(speed), 1.5);
-	AddSequential(new PrepLaunch(speed), 1.5);
+	AddSequential(new SpinUp(speed), 1.5);
+//	AddSequential(new PrepLaunch(speed), 1.5);
 	//AddSequential(new ReverseIntakeCommand(),1);
-	AddSequential(new ServoExtend(), .5);
+	AddSequential(new ServoExtend(), 0.5);
 //	AddSequential(new WaitCommand(1));
 	AddSequential(new StopSpeed());
-	AddSequential(new ServoRetract());
+	AddSequential(new ServoRetract(), 0.5);
 }

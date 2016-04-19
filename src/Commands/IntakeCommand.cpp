@@ -1,6 +1,7 @@
 #include "IntakeCommand.h"
 #include "Subsystems/IntakeRoller.h"
 #include "Subsystems/LauncherPIDSubsystem.h"
+#include "Subsystems/IntakeArms.h"
 #include "OI.h"
 
 IntakeCommand::IntakeCommand()
@@ -10,6 +11,7 @@ IntakeCommand::IntakeCommand()
 	Requires(intakeroller);
 	Requires(leftlauncherpid);
 	Requires(rightlauncherpid);
+	Requires(intakearms);
 }
 
 // Called just before this Command runs the first time
@@ -22,6 +24,10 @@ void IntakeCommand::Initialize()
 void IntakeCommand::Execute()
 {
 	intakeroller->SetSpeed(.80);
+//	double lift_power = -0.35;
+	double lift_power = -0.35 - (0.2 * oi->GetMechanismStick().GetRawAxis(1));
+
+	intakearms->SetSpeed(lift_power);
 	leftlauncherpid->SetManual(-.55);
 //	leftlauncherpid->Enable();
 	rightlauncherpid->SetManual(-.55);
@@ -40,6 +46,7 @@ void IntakeCommand::End()
 	intakeroller->SetSpeed(0);
 	leftlauncherpid->SetManual(0);
 	rightlauncherpid->SetManual(0);
+	intakearms->SetSpeed(0);
 }
 
 // Called when another command which requires one or more of the same
@@ -49,5 +56,6 @@ void IntakeCommand::Interrupted()
 	intakeroller->SetSpeed(0);
 	leftlauncherpid->SetManual(0);
 	rightlauncherpid->SetManual(0);
+	intakearms->SetSpeed(0);
 
 }

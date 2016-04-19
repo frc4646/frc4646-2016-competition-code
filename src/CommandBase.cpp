@@ -43,7 +43,7 @@ void CommandBase::init()
 	// line should be repeated for each subsystem in the project.
 	dropdrive = new DropDrive(M9,M1,A1);
 	ultrasonicsensor = new UltrasonicSensor(A0);
-	oi = new OI();
+
 	leftlauncherpid = new LauncherPIDSubsystem("Left", M8,D2);
 	rightlauncherpid = new LauncherPIDSubsystem("Right", M2,D4);
 	intakeroller = new IntakeRoller(M7);
@@ -52,6 +52,9 @@ void CommandBase::init()
 	ledsystem = new LEDSystem();
 	sendsmartdash = new SendSmartDash();
 	firingservo = new FiringServo(M4);
+
+	//oi needs to be last
+	oi = new OI();
 
 
 	SmartDashboard::PutData(dropdrive);

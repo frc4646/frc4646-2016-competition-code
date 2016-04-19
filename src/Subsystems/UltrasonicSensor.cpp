@@ -14,7 +14,7 @@ void UltrasonicSensor::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new UltrasonicCommand());
+//	SetDefaultCommand(new UltrasonicCommand());
 }
 
 double UltrasonicSensor::GetDistance() {

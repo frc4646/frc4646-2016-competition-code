@@ -18,7 +18,7 @@ void RobotGoalDistance::Initialize()
 }
 
 //const int DESIRED_HEIGHT = 295;
-const int DESIRED_Y_POS=286;
+const int DESIRED_Y_POS=112;
 const int DEADBAND = 2;
 const int LIMITLOW = DESIRED_Y_POS - DEADBAND;
 const int LIMITHIGH = DESIRED_Y_POS + DEADBAND;

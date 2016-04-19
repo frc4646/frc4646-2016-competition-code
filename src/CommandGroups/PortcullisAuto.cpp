@@ -1,10 +1,10 @@
-#include <CommandGroups/Launch.h>
-#include <CommandGroups/SpyAuto.h>
-#include <Commands/DriveUntilFar.h>
-#include <Commands/RobotGoalAngle.h>
-#include <Commands/RobotGoalDistance.h>
+#include <CommandGroups/PortcullisAuto.h>
+#include <Commands/DriveForTime.h>
+#include <Commands/FoldIntakeOut.h>
+#include <Commands/ResetGyro.h>
+#include <Commands/TurnForAngle.h>
 
-SpyAuto::SpyAuto()
+PortcullisAuto::PortcullisAuto()
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -22,8 +22,10 @@ SpyAuto::SpyAuto()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential(new DriveUntilFar(-.5,72));
-	AddSequential(new RobotGoalAngle());
-	AddSequential(new RobotGoalDistance());
-	AddSequential(new Launch(1));
+	AddSequential(new ResetGyro());
+	AddSequential(new FoldIntakeOut(), 1);
+	AddSequential(new DriveForTime(1,0),2.5);
+	AddSequential(new TurnForAngle(.4, 0), 2);
+	AddSequential(new DriveForTime(.4, 0), .5);
+
 }

@@ -14,6 +14,9 @@
 #include "Commands/RobotGoalDistance.h"
 #include "Commands/DriveStraight.h"
 
+#include "Commands/ServoExtend.h"
+#include "Commands/ServoRetract.h"
+
 OI::OI():
 left(0),
 right(1),
@@ -40,8 +43,10 @@ driveStraight(&left, 1)
 
 {
 	// Process operator interface input here.
-	lowspeed.WhileHeld(new SpinUp(0.4));
-	highspeed.WhileHeld(new SpinUp(1));
+//	lowspeed.WhileHeld(new SpinUp(0.4));
+//	highspeed.WhileHeld(new SpinUp(1));
+	lowspeed.WhileHeld(new ServoRetract());
+	highspeed.WhileHeld(new ServoExtend());
 	stopspeed.WhileHeld(new StopSpeed());
 	emergencyspin.WhileHeld(new EmergencySpin());
 	intakeroller.WhileHeld(new IntakeCommand());
@@ -51,7 +56,7 @@ driveStraight(&left, 1)
 	//reversespeed.WhileHeld(new ReverseSpeed());
 	emergencyfire.WhileHeld(new ReverseIntakeCommand());
 	launchhigh.WhenPressed(new Launch(1));
-	launchlow.WhenPressed(new Launch(0.4));
+	launchlow.WhenPressed(new Launch(0.45));
 	assistTurn.WhileHeld(new RobotGoalAngle());
 	assistDistance.WhileHeld(new RobotGoalDistance());
 	driverFire.WhenPressed(new Launch(1));

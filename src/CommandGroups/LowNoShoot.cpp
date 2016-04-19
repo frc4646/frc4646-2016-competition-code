@@ -1,4 +1,4 @@
-#include <CommandGroups/FiringAuto.h>
+#include "LowNoShoot.h"
 #include <CommandGroups/Launch.h>
 #include <Commands/AutoRollerIn.h>
 #include <Commands/DriveForTime.h>
@@ -9,12 +9,12 @@
 #include <Commands/RobotGoalDistance.h>
 #include <Commands/TurnForAngle.h>
 
-FiringAuto::FiringAuto()
+LowNoShoot::LowNoShoot()
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
-	// these will run in order.'
+	// these will run in order.
 
 	// To run multiple commands at the same time,
 	// use AddParallel()
@@ -31,15 +31,7 @@ FiringAuto::FiringAuto()
 	AddSequential(new FoldIntakeOut(), 1);
 	AddSequential(new TurnForAngle(.3, 0), .5);
 	AddSequential(new DriveForTime(.45,0),3.75);
-	AddSequential(new AutoRollerIn(), 1);
+//	AddSequential(new AutoRollerIn(), 1);
 	//AddSequential(new IntakeCommand(), .1);
 	AddSequential(new DriveUntilClose(.4,94));
-	AddSequential(new TurnForAngle(.3, 60),.75);
-	AddSequential(new DriveForTime(.4, 0), 1.2);
-	AddSequential(new RobotGoalAngle(),2);
-	AddSequential(new RobotGoalDistance(),2);
-	AddSequential(new RobotGoalAngle(),1);
-//	AddSequential(new SpinUp(.8), 2);
-	AddSequential(new Launch(.9));
-
 }

@@ -21,7 +21,7 @@ void RobotAngleDistance::Initialize()
 
 }
 
-const int DESIRED_Y_POS=70;
+const int DESIRED_Y_POS=214;
 const int DEADBAND = 1;
 const int LIMITLOW = DESIRED_Y_POS - DEADBAND;
 const int LIMITHIGH = DESIRED_Y_POS + DEADBAND;
