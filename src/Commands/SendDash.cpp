@@ -4,6 +4,7 @@
 #include "Subsystems/IntakeArms.h"
 #include "Subsystems/IntakeRoller.h"
 #include "Subsystems/LauncherPIDSubsystem.h"
+#include "Subsystems/SlavedLauncherPID.h"
 #include "Subsystems/UltrasonicSensor.h"
 #include "Subsystems/VisionCalculation.h"
 
@@ -27,8 +28,9 @@ void SendDash::Execute()
 	intakeroller->SendSD();
 	ultrasonicsensor->SendSD();
 	visioncalculation->SendSD();
-	leftlauncherpid->SendSD();
-	rightlauncherpid->SendSD();
+	slavelauncherpid->SendSD();
+	//	leftlauncherpid->SendSD();
+//	rightlauncherpid->SendSD();
 
 }
 

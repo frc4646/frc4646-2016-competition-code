@@ -40,7 +40,7 @@ void IntakeArms::SetSpeed(double power)
 
 void IntakeArms::Raise() {
 
-	arms.Set(-.75);
+	arms.Set(-.45);
 	//	if(LimitUp->Get())
 //	{
 //		LeftEncoder.Reset();

@@ -34,7 +34,7 @@ FiringAuto::FiringAuto()
 	AddSequential(new AutoRollerIn(), 1);
 	//AddSequential(new IntakeCommand(), .1);
 	AddSequential(new DriveUntilClose(.4,94));
-	AddSequential(new TurnForAngle(.3, 60),.75);
+	AddSequential(new TurnForAngle(.3, 60),1.0);
 	AddSequential(new DriveForTime(.4, 0), 1.2);
 	AddSequential(new RobotGoalAngle(),2);
 	AddSequential(new RobotGoalDistance(),2);

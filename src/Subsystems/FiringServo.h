@@ -16,6 +16,9 @@ public:
 	void InitDefaultCommand();
 	void GoToAngle(double angle);
 	void Set(double value);
+
+	void RetractServo();
+	void ExtendServo();
 };
 
 #endif

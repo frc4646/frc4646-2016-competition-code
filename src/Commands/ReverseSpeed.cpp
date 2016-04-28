@@ -1,19 +1,22 @@
 #include "ReverseSpeed.h"
 #include "Subsystems/LauncherPIDSubsystem.h"
+#include "Subsystems/SlavedLauncherPID.h"
 
 ReverseSpeed::ReverseSpeed()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(leftlauncherpid);
-	Requires(rightlauncherpid);
+	Requires(slavelauncherpid);
+	//	Requires(leftlauncherpid);
+//	Requires(rightlauncherpid);
 }
 
 // Called just before this Command runs the first time
 void ReverseSpeed::Initialize()
 {
-	leftlauncherpid->Reverse();
-	rightlauncherpid->Reverse();
+	slavelauncherpid->Reverse();
+	//	leftlauncherpid->Reverse();
+//	rightlauncherpid->Reverse();
 
 }
 

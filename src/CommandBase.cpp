@@ -2,6 +2,7 @@
 #include "Subsystems/DropDrive.h"
 #include "Subsystems/UltrasonicSensor.h"
 #include "Subsystems/LauncherPIDSubsystem.h"
+#include "Subsystems/SlavedLauncherPID.h"
 #include "Subsystems/IntakeRoller.h"
 #include "Subsystems/IntakeArms.h"
 #include "Subsystems/VisionCalculation.h"
@@ -16,8 +17,9 @@
 OI* CommandBase::oi = NULL;
 DropDrive* CommandBase::dropdrive = NULL;
 UltrasonicSensor* CommandBase::ultrasonicsensor = NULL;
-LauncherPIDSubsystem* CommandBase::leftlauncherpid = NULL;
-LauncherPIDSubsystem* CommandBase::rightlauncherpid = NULL;
+SlavedLauncherPID* CommandBase::slavelauncherpid = NULL;
+//LauncherPIDSubsystem* CommandBase::leftlauncherpid = NULL;
+//LauncherPIDSubsystem* CommandBase::rightlauncherpid = NULL;
 IntakeRoller* CommandBase::intakeroller = NULL;
 IntakeArms* CommandBase::intakearms = NULL;
 VisionCalculation* CommandBase::visioncalculation = NULL;
@@ -44,8 +46,9 @@ void CommandBase::init()
 	dropdrive = new DropDrive(M9,M1,A1);
 	ultrasonicsensor = new UltrasonicSensor(A0);
 
-	leftlauncherpid = new LauncherPIDSubsystem("Left", M8,D2);
-	rightlauncherpid = new LauncherPIDSubsystem("Right", M2,D4);
+	slavelauncherpid = new SlavedLauncherPID("Master", M8, M2, D2);
+//	leftlauncherpid = new LauncherPIDSubsystem("Left", M8,D2);
+//	rightlauncherpid = new LauncherPIDSubsystem("Right", M2,D4);
 	intakeroller = new IntakeRoller(M7);
 	intakearms = new IntakeArms(M5,D5,D1,D0,D7,D8);
 	visioncalculation = new VisionCalculation();

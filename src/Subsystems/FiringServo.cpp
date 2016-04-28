@@ -7,7 +7,7 @@ FiringServo::FiringServo(MotorPin servoPort) :
 		Subsystem("ExampleSubsystem"),
 		StagingServo(servoPort)
 {
-	StagingServo.Set(1);
+	RetractServo();
 }
 
 void FiringServo::InitDefaultCommand()
@@ -25,6 +25,16 @@ void FiringServo::GoToAngle(double angle) {
 void FiringServo::Set(double angle)
 {
 	StagingServo.Set(angle);
+}
+
+
+void FiringServo::RetractServo()
+{
+	StagingServo.Set(.047);
+}
+void FiringServo::ExtendServo()
+{
+	StagingServo.Set(.630);
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

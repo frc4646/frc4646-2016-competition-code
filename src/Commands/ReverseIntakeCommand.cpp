@@ -7,8 +7,8 @@ ReverseIntakeCommand::ReverseIntakeCommand()
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(intakeroller);
-	Requires(leftlauncherpid);
-	Requires(rightlauncherpid);
+//	Requires(leftlauncherpid);
+//	Requires(rightlauncherpid);
 }
 
 // Called just before this Command runs the first time
