@@ -15,6 +15,7 @@
 #include "Subsystems/DropDrive.h"
 #include "CommandGroups/JustCrossDefense.h"
 #include "CommandGroups/PortcullisAuto.h"
+#include "CommandGroups/ComeBack.h"
 
 class Robot: public IterativeRobot
 {
@@ -37,11 +38,12 @@ private:
 		chooser = new SendableChooser();
 		chooser->AddDefault("Do Nothing", new DriveForTime(0,0));
 		chooser->AddObject("Low Bar Auto", new FiringAuto());
-		chooser->AddObject("Defense 2 Auto", new CrossDefenseAuto(45));
-		chooser->AddObject("Defense 3 Auto", new CrossDefenseAuto(0));
+//		chooser->AddObject("Defense 2 Auto", new CrossDefenseAuto(45));
+//		chooser->AddObject("Defense 3 Auto", new CrossDefenseAuto(0));
 		chooser->AddObject("Spy Bot Auto", new SpyAuto());
 		chooser->AddObject("Cross Defense", new JustCrossDefense());
 		chooser->AddObject("Cross Portcullis", new PortcullisAuto());
+		chooser->AddObject("Go And Come Back", new ComeBack());
 		disable = new SendI2C(LEDSystem::LEDstate::disabled);
 		disable->Initialize();
 		SmartDashboard::PutData("Autonomous mode", chooser);

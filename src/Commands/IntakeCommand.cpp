@@ -27,7 +27,9 @@ void IntakeCommand::Execute()
 {
 	intakeroller->SetSpeed(.80);
 //	double lift_power = -0.35;
-	double lift_power = -0.35 - (0.25 * oi->GetMechanismStick().GetRawAxis(1));
+	double lift_power = -0.28 - (0.2 * oi->GetMechanismStick().GetRawAxis(1));
+
+//	double lift_power = -0.35 - (0.2 * oi->GetMechanismStick().GetRawAxis(1));
 
 	intakearms->SetSpeed(lift_power);
 	slavelauncherpid->SetManual(-.55);
