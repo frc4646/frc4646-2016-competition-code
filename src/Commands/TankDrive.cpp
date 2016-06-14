@@ -19,7 +19,7 @@ void TankDrive::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void TankDrive::Execute()
 {
-	dropdrive->HandleDrive(oi->GetLeftStick(),oi->GetRightStick());
+	dropdrive->HandleDrive(oi->GetGamepad().GetRawAxis(1),oi->GetGamepad().GetRawAxis(5));
 }
 
 // Make this return true when this Command no longer needs to run execute()

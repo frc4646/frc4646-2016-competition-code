@@ -20,7 +20,7 @@ private:
 public:
 	DropDrive(MotorPin leftPort, MotorPin rightPort, AnalogPin gyroPort);
 	void InitDefaultCommand();
-	void HandleDrive(Joystick& left, Joystick& right);
+	void HandleDrive(float left, float right);
 	void Stop();
 	void SetDrive(double power, double curve);
 	double GetHeading();

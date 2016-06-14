@@ -29,8 +29,8 @@ void DropDrive::InitDefaultCommand()
 
 }
 
-void DropDrive::HandleDrive(Joystick& left, Joystick& right) {
-	DriveTrain.TankDrive(left.GetRawAxis(1)*-1.0, right.GetRawAxis(1)*-1.0);
+void DropDrive::HandleDrive(float left, float right) {
+	DriveTrain.TankDrive(left*-1.0, right*-1.0);
 //	SmartDashboard::PutNumber("Gyro heading", gyro.GetAngle());
 }
 

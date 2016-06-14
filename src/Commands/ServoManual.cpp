@@ -18,8 +18,8 @@ void ServoManual::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ServoManual::Execute()
 {
-	firingservo->Set(oi->GetLeftStick().GetRawAxis(2));
-	SmartDashboard::PutNumber("ServoCommand", oi->GetLeftStick().GetRawAxis(2));
+//	firingservo->Set(oi->GetLeftStick().GetRawAxis(2));
+//	SmartDashboard::PutNumber("ServoCommand", oi->GetLeftStick().GetRawAxis(2));
 
 }
 

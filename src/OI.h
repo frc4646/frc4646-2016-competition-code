@@ -7,33 +7,15 @@ class OI
 {
 public:
 	OI();
-	Joystick& GetLeftStick();
-	Joystick& GetRightStick();
-	Joystick& GetMechanismStick();
-	double GetIntakeSpeed();
+	Joystick& GetGamepad();
 private:
-	Joystick left;
-	Joystick right;
-	Joystick mechanism;
-	JoystickButton lowspeed;
-	JoystickButton highspeed;
-	JoystickButton stopspeed;
-	JoystickButton reversespeed;
-	JoystickButton emergencyspin;
-	JoystickButton intakeroller;
-	JoystickButton foldintakeout;
+	Joystick Gamepad;
+	JoystickButton Intake;
 	JoystickButton foldintakein;
-	JoystickButton emergencyfire;
-	JoystickButton launchhigh;
-	JoystickButton emergencyraise;
-	JoystickButton launchlow;
-	JoystickButton assistTurn;
-	JoystickButton assistDistance;
-	JoystickButton driverFire;
-	JoystickButton driveStraight;
-	//	JoystickButton fireState;
-//	JoystickButton alignState;
-//	JoystickButton outrangeState;
+	JoystickButton foldintakeout;
+	JoystickButton LowGoal;
+	JoystickButton HighGoal;
+	JoystickButton straightdrive;
 };
 
 #endif
