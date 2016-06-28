@@ -12,8 +12,8 @@ class DropDrive: public Subsystem
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	Talon leftMotors;
-	Talon rightMotors;
+	Spark leftMotors;
+	Spark rightMotors;
 	RobotDrive DriveTrain;
 	AnalogGyro gyro;
 
