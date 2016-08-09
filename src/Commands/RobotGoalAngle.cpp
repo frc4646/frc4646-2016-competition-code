@@ -6,8 +6,12 @@
 RobotGoalAngle::RobotGoalAngle():
 turning(0),
 robotTurn(0),
-confidence(0)
+confidence(0),
+po(),
+ps(visioncalculation),
+pc(1,0,0,&ps,&po)
 {
+	SmartDashboard::PutData("RobotGoalAnglePID", &pc);
 	Requires(visioncalculation);
 	Requires(dropdrive);
 }
@@ -15,7 +19,10 @@ confidence(0)
 // Called just before this Command runs the first time
 void RobotGoalAngle::Initialize()
 {
-
+	pc.Reset();
+	pc.SetSetpoint(0.0);
+	pc.SetOutputRange(-0.3, 0.3);
+	pc.Enable();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -23,9 +30,11 @@ void RobotGoalAngle::Execute()//Optimal middle x ~307 with first shooter modific
 {
 //	const double turn_power = 0.18;
 
-	const double turn_power = 0.36;
-	turning = visioncalculation->RobotToGoalAngle()/320.0;
-	if (turning > 0.01)
+	robotTurn = pc.Get();
+	SmartDashboard::PutNumber("Turn Power", robotTurn);
+
+
+/**	if (turning > 0.01)
 	{
 		robotTurn = turn_power;
 	}
@@ -37,7 +46,7 @@ void RobotGoalAngle::Execute()//Optimal middle x ~307 with first shooter modific
 	{
 		robotTurn = 0;
 	}
-
+**/
 	dropdrive->SetDrive(robotTurn, 1);
 	SmartDashboard::PutNumber("Goal X Position", robotTurn);
 	SmartDashboard::PutBoolean("LinedUp",confidence > 3);
@@ -54,6 +63,7 @@ bool RobotGoalAngle::IsFinished()
 void RobotGoalAngle::End()
 {
 	dropdrive->SetDrive(0,0);
+	pc.Disable();
 }
 
 // Called when another command which requires one or more of the same

@@ -3,6 +3,8 @@
 
 #include "../CommandBase.h"
 #include "WPILib.h"
+#include "Subsystems/NullPIDOutput.h"
+#include "Subsystems/RobotAnglePIDSource.h"
 
 class RobotGoalAngle: public CommandBase
 {
@@ -18,6 +20,9 @@ private:
 	float turning;
 	float robotTurn;
 	int confidence;
+	NullPIDOutput po;
+	RobotAnglePIDSource ps;
+	PIDController pc;
 };
 
 #endif
