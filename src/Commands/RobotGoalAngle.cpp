@@ -9,7 +9,7 @@ robotTurn(0),
 confidence(0),
 po(),
 ps(visioncalculation),
-pc(1,0,0,&ps,&po)
+pc(0.35,0,0,&ps,&po)
 {
 	SmartDashboard::PutData("RobotGoalAnglePID", &pc);
 	Requires(visioncalculation);
@@ -33,6 +33,29 @@ void RobotGoalAngle::Execute()//Optimal middle x ~307 with first shooter modific
 	robotTurn = pc.Get();
 	SmartDashboard::PutNumber("Turn Power", robotTurn);
 
+	float battery = DriverStation::GetInstance().GetBatteryVoltage();
+//	float deadband = 0.08;
+
+	//Battery VOltage method
+	//13V, 0.07 12.3V,0.08 Linear Regression
+	const float deadband = .276349 - .015873 * battery;
+	//p of 0.35
+
+	//PID Method
+	//float deadband= 0.07;
+	//P:0.3 I:0.01 D:0.05
+	//Slower
+	SmartDashboard::PutNumber("Battery", battery);
+	SmartDashboard::PutNumber("Deadband", deadband);
+
+	if(robotTurn > 0)
+	{
+		robotTurn += deadband;
+	}
+	if(robotTurn < 0)
+	{
+		robotTurn -= deadband;
+	}
 
 /**	if (turning > 0.01)
 	{
@@ -55,8 +78,9 @@ void RobotGoalAngle::Execute()//Optimal middle x ~307 with first shooter modific
 // Make this return true when this Command no longer needs to run execute()
 bool RobotGoalAngle::IsFinished()
 {
-	isInRange();
-	return confidence > 3;
+	return false;
+//	isInRange();
+//	return confidence > 3;
 }
 
 // Called once after isFinished returns true

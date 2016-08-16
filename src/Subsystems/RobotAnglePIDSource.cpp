@@ -21,6 +21,7 @@ RobotAnglePIDSource::~RobotAnglePIDSource() {
 
 double RobotAnglePIDSource::PIDGet()
 {
-	return visionCalculation->RobotToGoalAngle()/320.0;
-
+	double result = -visionCalculation->RobotToGoalAngle()/320.0;
+	SmartDashboard::PutNumber("PIDGet", result);
+	return result;
 }
