@@ -31,6 +31,7 @@ private:
 	JoystickButton assistDistance;
 	JoystickButton driverFire;
 	JoystickButton driveStraight;
+	JoystickButton light;
 	//	JoystickButton fireState;
 //	JoystickButton alignState;
 //	JoystickButton outrangeState;

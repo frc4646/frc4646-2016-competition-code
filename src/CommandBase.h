@@ -17,6 +17,7 @@ class VisionCalculation;
 class LEDSystem;
 class SendSmartDash;
 class FiringServo;
+class FlashlightRelay;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -42,6 +43,7 @@ public:
 	static LEDSystem *ledsystem;
 	static SendSmartDash *sendsmartdash;
 	static FiringServo *firingservo;
+	static FlashlightRelay *flashlightrelay;
 };
 
 

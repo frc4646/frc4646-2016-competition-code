@@ -12,6 +12,7 @@
 #include "PinEnums.h"
 #include "Subsystems/SendSmartDash.h"
 #include "Subsystems/FiringServo.h"
+#include "Subsystems/FlashlightRelay.h"
 
 // Initialize a single static instance of all of your subsystems to NULL
 OI* CommandBase::oi = NULL;
@@ -26,6 +27,7 @@ VisionCalculation* CommandBase::visioncalculation = NULL;
 LEDSystem* CommandBase::ledsystem = NULL;
 SendSmartDash* CommandBase::sendsmartdash = NULL;
 FiringServo* CommandBase::firingservo = NULL;
+FlashlightRelay* CommandBase::flashlightrelay = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -55,6 +57,7 @@ void CommandBase::init()
 	ledsystem = new LEDSystem();
 	sendsmartdash = new SendSmartDash();
 	firingservo = new FiringServo(M4);
+	flashlightrelay = new FlashlightRelay();
 
 	//oi needs to be last
 	oi = new OI();

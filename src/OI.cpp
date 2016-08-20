@@ -13,7 +13,7 @@
 #include "Commands/RobotGoalAngle.h"
 #include "Commands/RobotGoalDistance.h"
 #include "Commands/DriveStraight.h"
-
+#include "Commands/FlashlightOnCommand.h"
 #include "Commands/ServoExtend.h"
 #include "Commands/ServoRetract.h"
 
@@ -36,7 +36,8 @@ launchlow(&mechanism,2),
 assistTurn(&left, 2),
 assistDistance(&right, 2),
 driverFire(&right, 1),
-driveStraight(&left, 1)
+driveStraight(&left, 1),
+light(&mechanism, 12)
 //fireState(&left, 1),
 //alignState(&left, 2),
 //outrangeState(&left, 3)
@@ -61,6 +62,7 @@ driveStraight(&left, 1)
 	assistDistance.WhileHeld(new RobotGoalDistance());
 	driverFire.WhenPressed(new Launch(1));
 	driveStraight.WhileHeld(new DriveStraight());
+	light.WhileHeld(new FlashlightOnCommand());
 //	fireState.WhenPressed(new SendI2C(LEDSystem::LEDstate::autonomous));
 //	alignState.WhenPressed(new SendI2C(LEDSystem::LEDstate::teleop));
 //	outrangeState.WhenPressed(new SendI2C(LEDSystem::LEDstate::disabled));
