@@ -28,9 +28,9 @@ void SendDash::Execute()
 	intakeroller->SendSD();
 	ultrasonicsensor->SendSD();
 	visioncalculation->SendSD();
-	slavelauncherpid->SendSD();
-	//	leftlauncherpid->SendSD();
-//	rightlauncherpid->SendSD();
+	//slavelauncherpid->SendSD();
+		leftlauncherpid->SendSD();
+	rightlauncherpid->SendSD();
 
 }
 

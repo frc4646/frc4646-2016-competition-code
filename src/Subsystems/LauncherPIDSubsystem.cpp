@@ -29,7 +29,7 @@ double LauncherPIDSubsystem::ReturnPIDInput()
 	// e.g. a sensor, like a potentiometer:
 	// yourPot->SetAverageVoltage() / kYourMaxVoltage;
 	double speed = (1.0/(pidEncoder.GetPeriod()))*60.0;
-//	SmartDashboard::PutNumber(GetName() + "RPMs", speed);
+	SmartDashboard::PutNumber(GetName() + "RPMs", speed);
 	return (speed)/5000;
 }
 

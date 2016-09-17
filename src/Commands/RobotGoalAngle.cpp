@@ -38,7 +38,8 @@ void RobotGoalAngle::Execute()//Optimal middle x ~307 with first shooter modific
 
 	//Battery VOltage method
 	//13V, 0.07 12.3V,0.08 Linear Regression
-	const float deadband = .276349 - .015873 * battery;
+	//const float deadband = .276349 - .015873 * battery;
+	const float deadband = 0.09;  // possible science center change to improve alignment on carpet
 	//p of 0.35
 
 	//PID Method

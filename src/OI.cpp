@@ -21,6 +21,7 @@ OI::OI():
 left(0),
 right(1),
 mechanism(2),
+lightswitch(3),
 lowspeed(&mechanism, 3),
 highspeed(&mechanism, 5),
 stopspeed(&mechanism, 9),
@@ -37,7 +38,7 @@ assistTurn(&left, 2),
 assistDistance(&right, 2),
 driverFire(&right, 1),
 driveStraight(&left, 1),
-light(&mechanism, 12)
+light(&lightswitch, 1)
 //fireState(&left, 1),
 //alignState(&left, 2),
 //outrangeState(&left, 3)

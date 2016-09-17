@@ -18,9 +18,9 @@
 OI* CommandBase::oi = NULL;
 DropDrive* CommandBase::dropdrive = NULL;
 UltrasonicSensor* CommandBase::ultrasonicsensor = NULL;
-SlavedLauncherPID* CommandBase::slavelauncherpid = NULL;
-//LauncherPIDSubsystem* CommandBase::leftlauncherpid = NULL;
-//LauncherPIDSubsystem* CommandBase::rightlauncherpid = NULL;
+//SlavedLauncherPID* CommandBase::slavelauncherpid = NULL;
+LauncherPIDSubsystem* CommandBase::leftlauncherpid = NULL;
+LauncherPIDSubsystem* CommandBase::rightlauncherpid = NULL;
 IntakeRoller* CommandBase::intakeroller = NULL;
 IntakeArms* CommandBase::intakearms = NULL;
 VisionCalculation* CommandBase::visioncalculation = NULL;
@@ -48,9 +48,9 @@ void CommandBase::init()
 	dropdrive = new DropDrive(M9,M1,A1);
 	ultrasonicsensor = new UltrasonicSensor(A0);
 
-	slavelauncherpid = new SlavedLauncherPID("Master", M8, M2, D2);
-//	leftlauncherpid = new LauncherPIDSubsystem("Left", M8,D2);
-//	rightlauncherpid = new LauncherPIDSubsystem("Right", M2,D4);
+//	slavelauncherpid = new SlavedLauncherPID("Master", M8, M2, D2);
+	leftlauncherpid = new LauncherPIDSubsystem("Left", M8,D2);
+	rightlauncherpid = new LauncherPIDSubsystem("Right", M2,D4);
 	intakeroller = new IntakeRoller(M7);
 	intakearms = new IntakeArms(M5,D5,D1,D0,D7,D8);
 	visioncalculation = new VisionCalculation();
@@ -65,10 +65,11 @@ void CommandBase::init()
 
 	SmartDashboard::PutData(dropdrive);
 //	SmartDashboard::PutData(ultrasonicsensor);
-//	SmartDashboard::PutData(leftlauncherpid);
-//	SmartDashboard::PutData(rightlauncherpid);
+	SmartDashboard::PutData(leftlauncherpid);
+	SmartDashboard::PutData(rightlauncherpid);
 //	SmartDashboard::PutString("Hello world!", "testing testing 123");
 	SmartDashboard::PutNumber("Gyroval", dropdrive->GetHeading());
 //	SmartDashboard::PutNumber("Voltage", ultrasonicsensor->GetVoltage());
-//	SmartDashboard::PutNumber("LeftPID", leftlauncherpid->ReturnPIDInput());
+	SmartDashboard::PutNumber("LeftPID", leftlauncherpid->ReturnPIDInput());
+	SmartDashboard::PutNumber("RightPID", rightlauncherpid->ReturnPIDInput());
 }

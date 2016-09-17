@@ -34,9 +34,9 @@ public:
 	static OI *oi;
 	static DropDrive *dropdrive;
 	static UltrasonicSensor *ultrasonicsensor;
-	static SlavedLauncherPID *slavelauncherpid;
-	//	static LauncherPIDSubsystem *leftlauncherpid;
-//	static LauncherPIDSubsystem *rightlauncherpid;
+//	static SlavedLauncherPID *slavelauncherpid;
+	static LauncherPIDSubsystem *leftlauncherpid;
+	static LauncherPIDSubsystem *rightlauncherpid;
 	static IntakeRoller *intakeroller;
 	static IntakeArms *intakearms;
 	static VisionCalculation *visioncalculation;

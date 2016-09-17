@@ -10,9 +10,9 @@ IntakeCommand::IntakeCommand()
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(intakeroller);
-	Requires(slavelauncherpid);
-	//	Requires(leftlauncherpid);
-//	Requires(rightlauncherpid);
+	//Requires(slavelauncherpid);
+		Requires(leftlauncherpid);
+	Requires(rightlauncherpid);
 	Requires(intakearms);
 }
 
@@ -32,11 +32,11 @@ void IntakeCommand::Execute()
 //	double lift_power = -0.35 - (0.2 * oi->GetMechanismStick().GetRawAxis(1));
 
 	intakearms->SetSpeed(lift_power);
-	slavelauncherpid->SetManual(-.55);
-	//	leftlauncherpid->SetManual(-.55);
-////	leftlauncherpid->Enable();
-//	rightlauncherpid->SetManual(-.55);
-////	rightlauncherpid->Enable();
+//	slavelauncherpid->SetManual(-.55);
+		leftlauncherpid->SetManual(-.55);
+	leftlauncherpid->Enable();
+	rightlauncherpid->SetManual(-.55);
+	rightlauncherpid->Enable();
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -49,9 +49,9 @@ bool IntakeCommand::IsFinished()
 void IntakeCommand::End()
 {
 	intakeroller->SetSpeed(0);
-	slavelauncherpid->SetManual(0);
-	//	leftlauncherpid->SetManual(0);
-//	rightlauncherpid->SetManual(0);
+//	slavelauncherpid->SetManual(0);
+		leftlauncherpid->SetManual(0);
+	rightlauncherpid->SetManual(0);
 	intakearms->SetSpeed(0);
 }
 
@@ -60,9 +60,9 @@ void IntakeCommand::End()
 void IntakeCommand::Interrupted()
 {
 	intakeroller->SetSpeed(0);
-	slavelauncherpid->SetManual(0);
-	//	leftlauncherpid->SetManual(0);
-//	rightlauncherpid->SetManual(0);
+//	slavelauncherpid->SetManual(0);
+		leftlauncherpid->SetManual(0);
+	rightlauncherpid->SetManual(0);
 	intakearms->SetSpeed(0);
 
 }

@@ -15,6 +15,7 @@ private:
 	Joystick left;
 	Joystick right;
 	Joystick mechanism;
+	Joystick lightswitch;
 	JoystickButton lowspeed;
 	JoystickButton highspeed;
 	JoystickButton stopspeed;
