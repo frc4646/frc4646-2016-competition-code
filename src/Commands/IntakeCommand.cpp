@@ -11,7 +11,7 @@ IntakeCommand::IntakeCommand()
 	// eg. Requires(chassis);
 	Requires(intakeroller);
 	//Requires(slavelauncherpid);
-		Requires(leftlauncherpid);
+	Requires(leftlauncherpid);
 	Requires(rightlauncherpid);
 	Requires(intakearms);
 }
@@ -33,7 +33,7 @@ void IntakeCommand::Execute()
 
 	intakearms->SetSpeed(lift_power);
 //	slavelauncherpid->SetManual(-.55);
-		leftlauncherpid->SetManual(-.55);
+	leftlauncherpid->SetManual(-.55);
 	leftlauncherpid->Enable();
 	rightlauncherpid->SetManual(-.55);
 	rightlauncherpid->Enable();
@@ -50,8 +50,10 @@ void IntakeCommand::End()
 {
 	intakeroller->SetSpeed(0);
 //	slavelauncherpid->SetManual(0);
-		leftlauncherpid->SetManual(0);
+	leftlauncherpid->SetManual(0);
+	leftlauncherpid->Disable();
 	rightlauncherpid->SetManual(0);
+	rightlauncherpid->Disable();
 	intakearms->SetSpeed(0);
 }
 
@@ -61,8 +63,10 @@ void IntakeCommand::Interrupted()
 {
 	intakeroller->SetSpeed(0);
 //	slavelauncherpid->SetManual(0);
-		leftlauncherpid->SetManual(0);
+	leftlauncherpid->SetManual(0);
+	leftlauncherpid->Disable();
 	rightlauncherpid->SetManual(0);
+	rightlauncherpid->Disable();
 	intakearms->SetSpeed(0);
 
 }

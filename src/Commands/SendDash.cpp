@@ -7,6 +7,7 @@
 #include "Subsystems/SlavedLauncherPID.h"
 #include "Subsystems/UltrasonicSensor.h"
 #include "Subsystems/VisionCalculation.h"
+#include "Subsystems/WriteInputs.h"
 
 SendDash::SendDash()
 {
@@ -31,6 +32,7 @@ void SendDash::Execute()
 	//slavelauncherpid->SendSD();
 		leftlauncherpid->SendSD();
 	rightlauncherpid->SendSD();
+	//writeinputs->SendSD();
 
 }
 

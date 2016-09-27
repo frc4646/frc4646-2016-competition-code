@@ -13,6 +13,7 @@
 #include "Subsystems/SendSmartDash.h"
 #include "Subsystems/FiringServo.h"
 #include "Subsystems/FlashlightRelay.h"
+#include "Subsystems/WriteInputs.h"
 
 // Initialize a single static instance of all of your subsystems to NULL
 OI* CommandBase::oi = NULL;
@@ -28,6 +29,7 @@ LEDSystem* CommandBase::ledsystem = NULL;
 SendSmartDash* CommandBase::sendsmartdash = NULL;
 FiringServo* CommandBase::firingservo = NULL;
 FlashlightRelay* CommandBase::flashlightrelay = NULL;
+//WriteInputsCommand* CommandBase::writeinputs = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -58,6 +60,7 @@ void CommandBase::init()
 	sendsmartdash = new SendSmartDash();
 	firingservo = new FiringServo(M4);
 	flashlightrelay = new FlashlightRelay();
+	//writeinputs = new WriteInputsCommand();
 
 	//oi needs to be last
 	oi = new OI();
@@ -72,4 +75,5 @@ void CommandBase::init()
 //	SmartDashboard::PutNumber("Voltage", ultrasonicsensor->GetVoltage());
 	SmartDashboard::PutNumber("LeftPID", leftlauncherpid->ReturnPIDInput());
 	SmartDashboard::PutNumber("RightPID", rightlauncherpid->ReturnPIDInput());
+	//SmartDashboard::PutNumber("Hall", writeinputs->GetInput());
 }

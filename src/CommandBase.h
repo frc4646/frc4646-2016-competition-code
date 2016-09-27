@@ -18,6 +18,7 @@ class LEDSystem;
 class SendSmartDash;
 class FiringServo;
 class FlashlightRelay;
+//class WriteInputsCommand;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -44,6 +45,7 @@ public:
 	static SendSmartDash *sendsmartdash;
 	static FiringServo *firingservo;
 	static FlashlightRelay *flashlightrelay;
+	//static WriteInputsCommand *writeinputs;
 };
 
 
