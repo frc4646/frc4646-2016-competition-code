@@ -17,14 +17,8 @@ void DriveStraight::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void DriveStraight::Execute()
 {
-	double gyroCurve = dropdrive->GetHeading()/90.0;
 	double robotPower = -oi->GetLeftStick().GetRawAxis(1);
-	if (robotPower > 0) {
-		dropdrive->SetDrive(robotPower, -gyroCurve);
-	}
-	else {
-		dropdrive->SetDrive(robotPower, gyroCurve);
-	}
+	dropdrive->StraightDrive(robotPower);
 
 }
 

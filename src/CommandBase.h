@@ -35,6 +35,10 @@ public:
 	static OI *oi;
 	static DropDrive *dropdrive;
 	static UltrasonicSensor *ultrasonicsensor;
+	static Counter* LeftPidCounter;
+	static Counter* RightPidCounter;
+	static SpeedController* launcherController;
+	static SpeedController* RightLauncherController;
 //	static SlavedLauncherPID *slavelauncherpid;
 	static LauncherPIDSubsystem *leftlauncherpid;
 	static LauncherPIDSubsystem *rightlauncherpid;

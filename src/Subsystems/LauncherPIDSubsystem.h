@@ -8,7 +8,7 @@
 class LauncherPIDSubsystem: public PIDSubsystem
 {
 public:
-	LauncherPIDSubsystem(std::string side, MotorPin motorPin, DIOPin encoderPin);
+	LauncherPIDSubsystem(std::string side, SpeedController& motorPin, Counter& encoderPin);
 	double ReturnPIDInput();
 	void UsePIDOutput(double output);
 	void InitDefaultCommand();
@@ -18,8 +18,8 @@ public:
 	void SendSD();
 
 private:
-	Victor pidMotor;
-	Counter pidEncoder;
+	SpeedController& pidMotor;
+	Counter& pidEncoder;
 	double reverseMultiplier;
 };
 #endif

@@ -34,7 +34,7 @@ float VisionCalculation::GetGoalDistance()
 	distVals = networkTable->GetNumberArray("centerY", llvm::ArrayRef<double>());
 	if (!distVals.empty())
 	{
-		goalHeight = (float)distVals[0];
+		goalHeight = (float)distVals[0] - 147;
 	}
 	else
 	{
@@ -46,7 +46,7 @@ float VisionCalculation::GetGoalDistance()
 
 float VisionCalculation::RobotToGoalAngle()
 {
-	const int desiredPosition = 240;
+	const int desiredPosition = 257;
 	xVals = networkTable->GetNumberArray("centerX", llvm::ArrayRef<double>());
 	if (!xVals.empty())
 	{

@@ -3,6 +3,8 @@
 
 #include "../CommandBase.h"
 #include "WPILib.h"
+#include "Subsystems/NullPIDOutput.h"
+#include "Subsystems/RobotDistancePIDSource.h"
 
 class RobotGoalDistance: public CommandBase
 {
@@ -14,7 +16,10 @@ public:
 	void End();
 	void Interrupted();
 private:
-	int heightPixels;
+	NullPIDOutput po;
+	RobotDistancePIDSource ps;
+	PIDController pc;
+	float distancePower;
 };
 
 #endif

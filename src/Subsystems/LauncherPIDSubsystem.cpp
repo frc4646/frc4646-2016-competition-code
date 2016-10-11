@@ -3,14 +3,14 @@
 #include "SmartDashboard/SmartDashboard.h"
 #include "LiveWindow/LiveWindow.h"
 
-LauncherPIDSubsystem::LauncherPIDSubsystem(std::string side, MotorPin motorPin, DIOPin encoderPin) :
+LauncherPIDSubsystem::LauncherPIDSubsystem(std::string side, SpeedController& motorPin, Counter& encoderPin) :
 		PIDSubsystem(side + "LauncherPIDSubsystem", 4.5, 0.167, .0),
 		pidMotor(motorPin),
 		pidEncoder(encoderPin),
 		reverseMultiplier(1)
 {
 	LiveWindow::GetInstance()->AddActuator(side + "LauncherPID2", side + "PIDController", GetPIDController());
-	LiveWindow::GetInstance()->AddActuator(side + "LauncherPID2", side + "OutputMotor", pidMotor);
+//	LiveWindow::GetInstance()->AddActuator(side + "LauncherPID2", side + "OutputMotor", pidMotor);
 	LiveWindow::GetInstance()->AddSensor(side + "LauncherPID2", side + "Encoder", pidEncoder);
 //	SmartDashboard::PutData(side+"LauncherPidController", GetPIDController().get());
 	GetPIDController()->SetOutputRange(0,1);

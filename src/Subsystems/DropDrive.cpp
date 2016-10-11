@@ -43,6 +43,17 @@ void DropDrive::SetDrive(double power, double curve) {
 	DriveTrain.Drive(power, curve);
 }
 
+void DropDrive::StraightDrive(double power){
+	double gyroCurve = GetHeading()/90.0;
+	double robotPower = power;
+	if (robotPower > 0) {
+		SetDrive(robotPower, -gyroCurve);
+	}
+	else {
+		SetDrive(robotPower, gyroCurve);
+	}
+}
+
 double DropDrive::GetHeading()
 {
 	return gyro.GetAngle();

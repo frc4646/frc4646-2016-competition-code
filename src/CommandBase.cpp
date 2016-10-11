@@ -14,11 +14,16 @@
 #include "Subsystems/FiringServo.h"
 #include "Subsystems/FlashlightRelay.h"
 #include "Subsystems/WriteInputs.h"
+#include "DoubleMotor.h"
 
 // Initialize a single static instance of all of your subsystems to NULL
 OI* CommandBase::oi = NULL;
 DropDrive* CommandBase::dropdrive = NULL;
 UltrasonicSensor* CommandBase::ultrasonicsensor = NULL;
+Counter* CommandBase::LeftPidCounter = NULL;
+Counter* CommandBase::RightPidCounter = NULL;
+SpeedController* CommandBase::launcherController = NULL;
+SpeedController* CommandBase::RightLauncherController = NULL;
 //SlavedLauncherPID* CommandBase::slavelauncherpid = NULL;
 LauncherPIDSubsystem* CommandBase::leftlauncherpid = NULL;
 LauncherPIDSubsystem* CommandBase::rightlauncherpid = NULL;
@@ -51,8 +56,12 @@ void CommandBase::init()
 	ultrasonicsensor = new UltrasonicSensor(A0);
 
 //	slavelauncherpid = new SlavedLauncherPID("Master", M8, M2, D2);
-	leftlauncherpid = new LauncherPIDSubsystem("Left", M8,D2);
-	rightlauncherpid = new LauncherPIDSubsystem("Right", M2,D4);
+	LeftPidCounter = new Counter(D4);
+	RightPidCounter = new Counter(D2);
+	launcherController = new Victor(M8);
+	RightLauncherController = new Victor(M2);
+	leftlauncherpid = new LauncherPIDSubsystem("Left", *launcherController,*LeftPidCounter);
+	rightlauncherpid = new LauncherPIDSubsystem("Right", *RightLauncherController,*RightPidCounter);
 	intakeroller = new IntakeRoller(M7);
 	intakearms = new IntakeArms(M5,D5,D1,D0,D7,D8);
 	visioncalculation = new VisionCalculation();
