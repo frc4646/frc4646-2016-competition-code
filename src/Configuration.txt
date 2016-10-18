@@ -1,0 +1,49 @@
+Easy reference for our port configurations
+
+Please update whenever the port numbers are, to keep it up to date
+
+Drop Drive:
+	Left: M9
+	Right: M1
+	Gyroscope: A1
+Ultrasonic Sensor:
+	Port: A0
+Left PID Counter:
+	Port: D4
+Right PID Counter:
+	Port: D2
+Left Launch Wheel Controller:
+	Port: M8
+Right Launch Wheel Controller:
+	Port: M2
+Intake Roller:
+	Port: M7
+Intake Arms:
+	Motor Port: M5
+	Limit Switch: D5
+	Left Encoder (A): D1
+	Left Encoder (B): D0
+	Right Encoder (A): D7
+	Right Encoder (B): D8
+Firing Servo:
+	Port: M4
+Write Inputs:
+	Input Port: A2
+
+Used Ports:
+A0	Ultrasonic
+A1	Gyroscope
+A2	Write Inputs
+M1	Drop Drive (Right)
+M2	Right Launch Wheel Controller
+M4	Firing Servo
+M5	Intake Arms
+M7	Intake Roller
+M8	Left Launch Wheel Controller
+M9	Drop Drive (Left)
+D0	Intake Arms (Left Encoder [A])
+D1	Intake Arms (Left Encoder [B])
+D2	Right PID Counter
+D4	Left PID Counter
+D7	Intake Arms (Right Encoder [A])
+D8	Intake Arms (Right Encoder [B])

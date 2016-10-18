@@ -13,6 +13,10 @@ public:
 	bool IsFinished();
 	void End();
 	void Interrupted();
+
+	WriteInputs wi;
+private:
+	//WriteInputs wi;
 };
 
 #endif

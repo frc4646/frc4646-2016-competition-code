@@ -1,6 +1,8 @@
 #include <Commands/WriteInputsCommand.h>
 #include "Subsystems/WriteInputs.h"
 
+WriteInputs wi;
+
 WriteInputsCommand::WriteInputsCommand()
 {
 	// Use Requires() here to declare subsystem dependencies
@@ -10,13 +12,13 @@ WriteInputsCommand::WriteInputsCommand()
 // Called just before this Command runs the first time
 void WriteInputsCommand::Initialize()
 {
-
+	wi = new WriteInputs();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void WriteInputsCommand::Execute()
 {
-	//SendSD();
+	wi.SendSD();
 }
 
 // Make this return true when this Command no longer needs to run execute()

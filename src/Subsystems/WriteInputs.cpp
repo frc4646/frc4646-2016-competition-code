@@ -1,4 +1,4 @@
-/*#include "WriteInputs.h"
+#include "WriteInputs.h"
 #include "../RobotMap.h"
 
 WriteInputs::WriteInputs() :
@@ -22,9 +22,9 @@ void WriteInputs::SendSD() {
 
 
 double WriteInputs::GetInput(){
-	AnalogInput *hall = new AnalogInput(0);
+	AnalogInput *hall = new AnalogInput(A2);
 	double val = hall->GetVoltage();
 	delete hall;
 	return val;
 }
-*/
+
