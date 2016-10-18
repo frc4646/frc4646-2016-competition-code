@@ -19,4 +19,29 @@
 // number and the module. For example you with a rangefinder:
 //const int RANGE_FINDER_PORT = 1;
 //const int RANGE_FINDER_MODULE = 1;
+
+/*
+ * #define DDL M9
+ * #define DDR M1
+ * #define DDG A1
+ *
+ * #define USP A0
+ *
+ * #define LPCP D4
+ * #define RPCP D2
+ *
+ * #define LLWCP M8
+ * #defin RLWCP M2
+ *
+ * #define IAM M5
+ * #define IALS D5
+ * #define IALEA D1
+ * #define IALEB D0
+ * #define IAREA D7
+ * #define IAREA D8
+ *
+ * #define FSP M4
+ *
+ * #define WIP A2
+ */
 #endif

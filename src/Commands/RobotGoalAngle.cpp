@@ -36,7 +36,7 @@ void RobotGoalAngle::Execute()//Optimal middle x ~307 with first shooter modific
 	float battery = DriverStation::GetInstance().GetBatteryVoltage();
 //	float deadband = 0.08;
 
-	//Battery VOltage method
+	//Battery Voltage method
 	//13V, 0.07 12.3V,0.08 Linear Regression
 	//const float deadband = .276349 - .015873 * battery;
 	const float deadband = 0.14;  // possible science center change to improve alignment on carpet

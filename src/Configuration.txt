@@ -46,4 +46,4 @@ D1	Intake Arms (Left Encoder [B])
 D2	Right PID Counter
 D4	Left PID Counter
 D7	Intake Arms (Right Encoder [A])
-D8	Intake Arms (Right Encoder [B])
+D8	Intake Arms (Right Encoder [B]) 
