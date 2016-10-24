@@ -29,6 +29,8 @@ Firing Servo:
 	Port: M4
 Write Inputs:
 	Input Port: A2
+Light Relay
+	Relay Port: 0
 
 Used Ports:
 A0	Ultrasonic
@@ -47,3 +49,4 @@ D2	Right PID Counter
 D4	Left PID Counter
 D7	Intake Arms (Right Encoder [A])
 D8	Intake Arms (Right Encoder [B]) 
+R0	Light Relay
