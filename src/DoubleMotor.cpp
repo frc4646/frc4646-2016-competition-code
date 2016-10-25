@@ -27,8 +27,10 @@ void DoubleMotor::PIDWrite(float output)
 
 void DoubleMotor::Set(float speed, uint8_t syncGroup)
 {
-	Left.Set(speed, syncGroup);
-	Right.Set(speed, syncGroup);
+	// Left.Set(speed, syncGroup);
+	// Right.Set(speed, syncGroup);
+	Left.Set(speed);
+	Right.Set(speed);
 }
 
 float DoubleMotor::Get() const
