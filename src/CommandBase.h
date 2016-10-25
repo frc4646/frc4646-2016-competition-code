@@ -49,7 +49,7 @@ public:
 	static SendSmartDash *sendsmartdash;
 	static FiringServo *firingservo;
 	static FlashlightRelay *flashlightrelay;
-	static WriteInputsCommand *writeinputs;
+	//static WriteInputsCommand *writeinputs;
 };
 
 

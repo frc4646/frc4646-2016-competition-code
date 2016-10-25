@@ -1,4 +1,4 @@
-#ifndef WriteInputs_H
+/*#ifndef WriteInputs_H
 #define WriteInputs_H
 
 #include "../CommandBase.h"
@@ -20,3 +20,4 @@ private:
 };
 
 #endif
+*/

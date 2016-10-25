@@ -1,4 +1,4 @@
-#include "WriteInputs.h"
+/*#include "WriteInputs.h"
 #include "../RobotMap.h"
 
 WriteInputs::WriteInputs() :
@@ -28,3 +28,4 @@ double WriteInputs::GetInput(){
 	return val;
 }
 
+*/

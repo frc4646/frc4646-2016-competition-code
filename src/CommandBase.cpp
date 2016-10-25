@@ -34,7 +34,7 @@ LEDSystem* CommandBase::ledsystem = NULL;
 SendSmartDash* CommandBase::sendsmartdash = NULL;
 FiringServo* CommandBase::firingservo = NULL;
 FlashlightRelay* CommandBase::flashlightrelay = NULL;
-WriteInputsCommand *writeinputs = NULL;
+// WriteInputsCommand *writeinputs = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -81,7 +81,7 @@ void CommandBase::init()
 	// Is the relay port hard-coded? Or configurable?
 	flashlightrelay = new FlashlightRelay();		// [no inputs]
 	// Port is not configurable
-	writeinputs = new WriteInputsCommand();			// [no inputs]
+//	writeinputs = new WriteInputsCommand();			// [no inputs]
 
 	//oi needs to be last
 	oi = new OI();									// [no inputs]
