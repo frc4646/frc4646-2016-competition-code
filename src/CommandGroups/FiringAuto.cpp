@@ -39,7 +39,6 @@ FiringAuto::FiringAuto()
 	AddSequential(new RobotGoalAngle(),2);
 	AddSequential(new RobotGoalDistance(),2);
 	AddSequential(new RobotGoalAngle(),1);
-//	AddSequential(new SpinUp(.8), 2);
 	AddSequential(new Launch(.9));
 
 }

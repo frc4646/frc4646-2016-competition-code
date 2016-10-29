@@ -3,6 +3,7 @@
 #include "Subsystems/UltrasonicSensor.h"
 
 DriveUntilClose::DriveUntilClose(double power, double distance):
+CommandBase("DriveUntilClose"),
 robotPower(power),
 sensorDistance(distance),
 confidence(0)

@@ -3,6 +3,7 @@
 #include <math.h>
 
 TurnForAngle::TurnForAngle(double robotPower, double robotAngle):
+CommandBase("TurnForAngle"),
 power(robotPower),
 angle(robotAngle)
 {
@@ -14,13 +15,13 @@ angle(robotAngle)
 // Called just before this Command runs the first time
 void TurnForAngle::Initialize()
 {
-	initDif = abs(dropdrive->GetHeading() - angle);
+	initDif = fabs(dropdrive->GetHeading() - angle);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void TurnForAngle::Execute()
 {
-	drive = power * abs((dropdrive->GetHeading() - angle))/initDif;
+	drive = power * fabs((dropdrive->GetHeading() - angle))/initDif;
 	if (drive < .2)
 	{
 		drive = .2;
@@ -39,7 +40,8 @@ void TurnForAngle::Execute()
 bool TurnForAngle::IsFinished()
 {
 	error = dropdrive->GetHeading() - angle;
-	return abs(error) < 5;
+	SmartDashboard::PutNumber("TurnForAngleError", error);
+	return fabs(error) < 5;
 }
 
 // Called once after isFinished returns true
@@ -52,5 +54,5 @@ void TurnForAngle::End()
 // subsystems is scheduled to run
 void TurnForAngle::Interrupted()
 {
-
+	End();
 }

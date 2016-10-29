@@ -22,7 +22,7 @@ JustCrossDefense::JustCrossDefense()
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 	AddSequential(new ResetGyro());
-	AddSequential(new DriveForTime(.8,0),2);
-	AddSequential(new TurnForAngle(.4, 0), 2);
-	AddSequential(new DriveForTime(.4, 0), .5);
+	AddSequential(new DriveForTime(.9,0),2.5);
+//	AddSequential(new TurnForAngle(.4, 0), 2);
+//	AddSequential(new DriveForTime(.4, 0), .5);
 }

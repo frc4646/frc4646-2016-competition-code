@@ -3,6 +3,7 @@
 #include "Subsystems/VisionCalculation.h"
 
 RobotGoalDistance::RobotGoalDistance():
+CommandBase("RobotGoalDistance"),
 po(),
 ps(visioncalculation),
 pc(1.75,0.003,-0.3,&ps,&po)

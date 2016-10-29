@@ -2,6 +2,7 @@
 #include "Subsystems/DropDrive.h"
 
 DriveForTime::DriveForTime(double power, double curve):
+CommandBase("DriveForTime"),
 drivePower(power),
 driveCurve(curve)
 {

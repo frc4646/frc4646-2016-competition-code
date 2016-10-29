@@ -2,7 +2,8 @@
 #include "Subsystems/IntakeRoller.h"
 #include "Subsystems/IntakeArms.h"
 
-AutoRollerIn::AutoRollerIn()
+AutoRollerIn::AutoRollerIn():
+CommandBase("AutoRollerIn")
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);

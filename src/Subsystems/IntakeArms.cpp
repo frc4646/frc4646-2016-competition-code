@@ -40,7 +40,7 @@ void IntakeArms::SetSpeed(double power)
 
 void IntakeArms::Raise() {
 
-	arms.Set(-.55);
+	arms.Set(-.4);
 	//	if(LimitUp->Get())
 //	{
 //		LeftEncoder.Reset();
@@ -66,7 +66,7 @@ void IntakeArms::ForceRaise() {
 }
 
 void IntakeArms::Lower() {
-	arms.Set(.65);
+	arms.Set(.45);
 	//	if(!MotorsUnbalanced()){
 //		arms.Set((MAX_ENCODER_COUNT-RightEncoder.Get())/MAX_ENCODER_COUNT);
 //	}

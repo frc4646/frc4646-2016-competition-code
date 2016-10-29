@@ -4,6 +4,7 @@
 #include <algorithm>
 
 RobotGoalAngle::RobotGoalAngle():
+CommandBase("RobotGoalAngle"),
 turning(0),
 robotTurn(0),
 confidence(0),

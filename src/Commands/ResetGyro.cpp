@@ -2,6 +2,7 @@
 #include "Subsystems/DropDrive.h"
 
 ResetGyro::ResetGyro()
+:CommandBase("ResetGyro")
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);

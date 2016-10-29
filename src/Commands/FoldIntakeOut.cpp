@@ -1,6 +1,7 @@
 #include "FoldIntakeOut.h"
 #include "Subsystems/IntakeArms.h"
 FoldIntakeOut::FoldIntakeOut()
+:CommandBase("FoldIntakeOut")
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
